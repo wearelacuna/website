@@ -27,11 +27,36 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- The font stylesheet was the single largest render-blocking request —
+     750ms on its own, inside a 1,630ms block. Loaded as a preload that
+     promotes itself to a stylesheet once it arrives, so it no longer holds
+     up first paint. display=swap was already set, so text has always
+     painted in a fallback first; this only stops the whole page waiting.
+     The noscript copy keeps it working with JavaScript disabled. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap"></noscript>
+<!-- Fallback metrics tuned to Archivo so the swap moves text as little as
+     possible. Without this, going async would trade blocking time for
+     layout shift — this keeps both low. -->
+<style>
+@font-face{
+  font-family:'Archivo-fallback';
+  src:local('Arial');
+  ascent-override:92%; descent-override:24%; line-gap-override:0%;
+  size-adjust:101%;
+}
+</style>
 <link rel="preconnect" href="https://images.pexels.com" crossorigin>
 <link rel="preconnect" href="https://videos.pexels.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-<link rel="preload" as="image" href="https://images.pexels.com/videos/7983980/pexels-photo-7983980.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" fetchpriority="high">
+<!-- The first poster is the Largest Contentful Paint element, so it is
+     preloaded. Two versions, one per breakpoint: preloading the 1920px
+     file on a phone downloads four times the pixels it can display. -->
+<link rel="preload" as="image" media="(min-width:901px)" fetchpriority="high"
+      href="https://images.pexels.com/videos/7983980/pexels-photo-7983980.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920">
+<link rel="preload" as="image" media="(max-width:900px)" fetchpriority="high"
+      href="https://images.pexels.com/videos/7983980/pexels-photo-7983980.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=1080&amp;h=1350">
 
 <style>
 /* ============================================================
@@ -56,7 +81,12 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
 }
-body{font-family:'Archivo',system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
+/* Archivo-fallback sits between Archivo and the system stack: it is Arial
+   with its metrics overridden to match Archivo, so the text that paints
+   before the webfont arrives occupies almost exactly the same space. That
+   is what keeps layout shift near zero now the stylesheet loads async. */
+body{font-family:'Archivo','Archivo-fallback',system-ui,-apple-system,sans-serif;
+  background:var(--paper);color:var(--ink);
   font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -71,13 +101,21 @@ a{color:inherit}
 h1,h2,h3,h4{font-weight:600;letter-spacing:-.03em;line-height:1.1}
 h1{font-size:clamp(2.6rem,6vw,3.9rem);letter-spacing:-.04em;line-height:1.03}
 h2{font-size:clamp(1.85rem,3.6vw,2.6rem);letter-spacing:-.033em}
-h3{font-size:1.4rem;letter-spacing:-.022em}
+/* Card, tile and panel headings sit directly beneath a section h2, so they
+   are h3 in the markup — they were h4, which skipped a level and broke the
+   document outline for screen readers. The size stays where it was: the
+   visual hierarchy was already right, only the levels were wrong. */
+h3{font-size:1.16rem;letter-spacing:-.018em}
 h4{font-size:1.16rem;letter-spacing:-.018em}
 /* Measure is capped on the text, not the container. 60–75 characters is the readable
    range; beyond about 80 the eye loses its place returning to the next line. So prose
    is always narrower than the page — the width is spent on layout instead. */
 p{max-width:72ch}
-.eb{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);font-weight:600;
+/* Green 700, not Green. #1D865A on Paper measures 4.21:1 — under the 4.5:1
+   AA floor for text this size. #166444 on Paper is 6.6:1. The brand green is
+   still correct as a FILL with white on top (4.56:1); it is green as TEXT on
+   a light ground that falls short, which is a different pairing. */
+.eb{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green-700);font-weight:600;
   margin-bottom:var(--s4);display:block}
 /* The standfirst runs the full width of the page. Because line length grows with the
    container, the type scales up with it — a bigger face fits fewer characters per line,
@@ -106,8 +144,9 @@ section{padding:var(--s9) 0}
 .btn-sec:hover{background:var(--ink);color:var(--paper)}
 .band-ink .btn-sec{color:var(--paper);border-color:rgba(247,246,242,.42)}
 .band-ink .btn-sec:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.btn-link{color:var(--green);border-bottom:1px solid var(--green);padding:0 0 2px;border-radius:0;
+.btn-link{color:var(--green-700);border-bottom:1px solid var(--green-700);padding:0 0 2px;border-radius:0;
   text-decoration:none;font-weight:500}
+.band-ink .btn-link{color:var(--green-300);border-bottom-color:var(--green-300)}
 .btns{display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center}
 
 /* ---------- wordmark ---------- */
@@ -172,7 +211,15 @@ nav.main a.btn-pri{font-size:.94rem;font-weight:500;padding:13px 24px}
 .hero .lead{margin-top:var(--s5);color:rgba(247,246,242,.72);max-width:56ch;
   font-size:clamp(1.05rem,1.5vw,1.24rem);line-height:1.6}
 .hero .btns{margin-top:var(--s7)}
-.hero .note{margin-top:var(--s4);font-size:.86rem;color:rgba(247,246,242,.45)}
+/* The hero is a dark ground but carries no .band-ink class, so the reversed
+   secondary button never applied here — it was rendering Ink text and an Ink
+   border on an Ink scrim, which is what Lighthouse flagged. Reversed here
+   explicitly rather than by adding band-ink, which would also repaint the
+   headings and lead. */
+.hero .btn-sec{color:var(--paper);border-color:rgba(247,246,242,.42)}
+.hero .btn-sec:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+/* .45 on the scrim is about 3.5:1 — under the floor for text this size */
+.hero .note{margin-top:var(--s4);font-size:.86rem;color:rgba(247,246,242,.66)}
 .hero-ctl{display:flex;align-items:center;gap:var(--s4);margin-top:var(--s7)}
 .dots{display:flex;gap:var(--s2)}
 .dot{width:38px;height:3px;padding:0;border:0;background:rgba(247,246,242,.26);cursor:pointer;
@@ -200,6 +247,18 @@ nav.main a.btn-pri{font-size:.94rem;font-weight:500;padding:13px 24px}
   line-height:1.24;max-width:24ch;color:var(--paper)}
 .statement p.sub{margin-top:var(--s5);color:rgba(247,246,242,.62);max-width:56ch;font-size:1.05rem}
 
+/* ---------- hero posters, sized to the screen ----------
+   The slides carry 1920px posters inline, which is right for a full-bleed
+   desktop hero and roughly four times what a phone can show. These serve a
+   1080px crop below 900px instead. !important is unavoidable: the source
+   images are inline style attributes, which outrank any selector. */
+@media(max-width:900px){
+  .hslide:nth-child(1){background-image:url(https://images.pexels.com/videos/7983980/pexels-photo-7983980.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1080&h=1350)!important}
+  .hslide:nth-child(2){background-image:url(https://images.pexels.com/videos/8141342/adult-boss-boss-lady-business-8141342.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1080&h=1350)!important}
+  .hslide:nth-child(3){background-image:url(https://images.pexels.com/videos/8643568/adult-business-businessman-businesswoman-8643568.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1080&h=1350)!important}
+  .hslide:nth-child(4){background-image:url(https://images.pexels.com/videos/5636983/pexels-photo-5636983.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1080&h=1350)!important}
+}
+
 /* ---------- card imagery ---------- */
 .card-img{aspect-ratio:16/10;overflow:hidden;background:var(--mist);
   margin:calc(var(--s6) * -1) calc(var(--s6) * -1) var(--s5);border-bottom:1px solid var(--line)}
@@ -225,7 +284,7 @@ nav.main a.btn-pri{font-size:.94rem;font-weight:500;padding:13px 24px}
 .band-mist + .band-paper,  .band-mist + .band-mist{border-top:1px solid var(--line)}
 .stats .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s7)}
 .stats b{display:block;font-size:clamp(2.2rem,4.4vw,3.1rem);font-weight:600;letter-spacing:-.04em;
-  line-height:1;color:var(--green);font-variant-numeric:tabular-nums}
+  line-height:1;color:var(--green-700);font-variant-numeric:tabular-nums}
 .stats span{display:block;margin-top:var(--s3);font-size:.93rem;color:var(--graphite);max-width:30ch}
 @media(max-width:780px){.stats .grid{grid-template-columns:1fr;gap:var(--s5)}}
 
@@ -243,6 +302,8 @@ nav.main a.btn-pri{font-size:.94rem;font-weight:500;padding:13px 24px}
 .band-ink .card{background:transparent;border-color:#2A2E33}
 .card.accent{border-left:4px solid var(--green)}
 .card h3,.card h4{margin-bottom:var(--s3)}
+/* h4 selectors below are kept as aliases so nothing depends on the swap */
+.tile h3,.fit h3,.incl-foot h3,.after h3{margin-bottom:var(--s3)}
 .card p{font-size:.97rem;color:var(--graphite);max-width:none}
 .band-ink .card p{color:rgba(247,246,242,.6)}
 .card .ico{width:40px;height:40px;margin-bottom:var(--s4);color:var(--ink)}
@@ -423,8 +484,10 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
 @media(max-width:1180px){.f-top{grid-template-columns:1.4fr 1fr 1fr;row-gap:var(--s7)}}
 @media(max-width:880px){.f-top{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.f-top{grid-template-columns:1fr}}
-.f-top h5{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(247,246,242,.34);
-  font-weight:600;margin-bottom:var(--s4)}
+/* h3, not h5 — the footer column labels used to skip two levels. The label
+   treatment is unchanged; only the element is. */
+.f-top h3,.f-top h5{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(247,246,242,.34);font-weight:600;margin-bottom:var(--s4)}
 .f-top ul{list-style:none;display:grid;gap:var(--s3)}
 .f-top a{color:rgba(247,246,242,.66);text-decoration:none;font-size:.95rem}
 .f-top a:hover{color:var(--paper)}
@@ -544,11 +607,15 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
     </div>
 
     <div class="hero-ctl">
-      <div class="dots" role="tablist" aria-label="Choose slide">
-        <button class="dot on" type="button" aria-label="Slide 1"></button>
-        <button class="dot" type="button" aria-label="Slide 2"></button>
-        <button class="dot" type="button" aria-label="Slide 3"></button>
-        <button class="dot" type="button" aria-label="Slide 4"></button>
+      <!-- A group, not a tablist. role="tablist" requires children with
+           role="tab" and matching tabpanels; this is an auto-rotating
+           carousel picker, which the ARIA practices treat as a plain group
+           of buttons. The previous markup broke the accessibility tree. -->
+      <div class="dots" role="group" aria-label="Choose slide">
+        <button class="dot on" type="button" aria-label="Go to slide 1" aria-current="true"></button>
+        <button class="dot" type="button" aria-label="Go to slide 2" aria-current="false"></button>
+        <button class="dot" type="button" aria-label="Go to slide 3" aria-current="false"></button>
+        <button class="dot" type="button" aria-label="Go to slide 4" aria-current="false"></button>
       </div>
       <button class="playbtn" id="heroPause" type="button" aria-label="Pause slideshow">
         <svg viewBox="0 0 10 10" aria-hidden="true"><rect x="1" y="0" width="3" height="10"/><rect x="6" y="0" width="3" height="10"/></svg>
@@ -601,19 +668,19 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
     </div>
     <div class="g4p">
       <div class="card">
-        <h4>Your people stopped telling you</h4>
+        <h3>Your people stopped telling you</h3>
         <p>When raising a ticket feels pointless, people work around problems instead. Ask around and you will find someone who has quietly given up — and whatever they have stopped reporting is invisible to everyone above them.</p>
       </div>
       <div class="card">
-        <h4>Nobody can say how long things take</h4>
+        <h3>Nobody can say how long things take</h3>
         <p>No ticketing means no record, and no record means no argument. The problems that get fixed are the ones raised by whoever is most persistent, rather than the ones costing you the most.</p>
       </div>
       <div class="card">
-        <h4>The invoice is never the real cost</h4>
+        <h3>The invoice is never the real cost</h3>
         <p>Forty people losing half a day is roughly $6,000 in salaried time. Six of those a year dwarfs almost any support contract — it is simply harder to see, because it never arrives as a bill.</p>
       </div>
       <div class="card">
-        <h4>You have become the escalation path</h4>
+        <h3>You have become the escalation path</h3>
         <p>When something serious breaks, the person chasing it is you. That is the clearest sign the arrangement is not working, and it is the part no provider ever puts on a report.</p>
       </div>
     </div>
@@ -630,27 +697,27 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
     </div>
     <div class="tiles">
       <div class="tile">
-        <h4>Service credits</h4>
+        <h3>Service credits</h3>
         <p>Miss a published response time and credits are applied to your account automatically. No claim form, no process, nothing to prove. Being slow costs us money — that is the entire point.</p>
       </div>
       <div class="tile">
-        <h4>Hot-spare devices</h4>
+        <h3>Hot-spare devices</h3>
         <p>Replacement machines live in your building, already configured. A failed laptop becomes a ten minute problem instead of a three day one waiting on a courier and a purchase order.</p>
       </div>
       <div class="tile">
-        <h4>Unlimited support</h4>
+        <h3>Unlimited support</h3>
         <p>One monthly cost covering remote and onsite support. No per-incident billing, so nobody on your team hesitates before asking for help, and no surprise invoice after a difficult month.</p>
       </div>
       <div class="tile">
-        <h4>Published response times</h4>
+        <h3>Published response times</h3>
         <p>P1 through P4 defined in the agreement with a target against each. Response means a named engineer working on it, not an automated acknowledgement landing in your inbox.</p>
       </div>
       <div class="tile">
-        <h4>An exit if we fail</h4>
+        <h3>An exit if we fail</h3>
         <p>Miss your service levels three months running and you can end the agreement on three months' notice, on any term. And if it comes to that, we move you to your new provider free of charge.</p>
       </div>
       <div class="tile">
-        <h4>Monthly reporting</h4>
+        <h3>Monthly reporting</h3>
         <p>What happened, how fast we responded, what we fixed and what we did not. Sent whether the month was good or bad, with a quarterly review about outcomes rather than ticket counts.</p>
       </div>
     </div>
@@ -669,37 +736,37 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
       <div class="card">
         <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/8192185/pexels-photo-8192185.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="A support engineer taking a call at their desk"></div>
         <div class="ico" data-ico="desk"></div>
-        <h4>Service desk</h4>
+        <h3>Service desk</h3>
         <p>The day to day. Named engineers who know your estate rather than a rota of strangers reading a script, with every request tracked and measured.</p>
       </div>
       <div class="card">
         <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/16564512/pexels-photo-16564512/free-photo-of-smartphone-on-desk.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="A working desk with laptop, monitor and phone"></div>
         <div class="ico" data-ico="euc"></div>
-        <h4>End user computing</h4>
+        <h3>End user computing</h3>
         <p>Laptops, desktops and mobiles from procurement through build, deployment and replacement — including the hot spares held on your site.</p>
       </div>
       <div class="card">
         <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="An engineer configuring network cabling in a server rack"></div>
         <div class="ico" data-ico="net"></div>
-        <h4>Networks &amp; connectivity</h4>
+        <h3>Networks &amp; connectivity</h3>
         <p>Firewalls, switching, wireless and the links between your sites and the cloud. Monitored continuously rather than checked when something breaks.</p>
       </div>
       <div class="card">
         <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/5380655/pexels-photo-5380655.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="A security analyst reviewing activity across a managed estate"></div>
         <div class="ico" data-ico="sec"></div>
-        <h4>Cyber security</h4>
+        <h3>Cyber security</h3>
         <p>Endpoint protection, patching, access control and multi-factor authentication as standard, with monitoring and a documented response when something is found.</p>
       </div>
       <div class="card">
         <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="An engineer working across monitors on cloud and server configuration"></div>
         <div class="ico" data-ico="cloud"></div>
-        <h4>Cloud &amp; infrastructure</h4>
+        <h3>Cloud &amp; infrastructure</h3>
         <p>Servers, storage and the platforms the business actually runs on — in your building, in a data centre or in Microsoft 365. Capacity, resilience and backup included, with restores tested quarterly and the results sent to you.</p>
       </div>
       <div class="card">
         <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/9034283/pexels-photo-9034283.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="A quarterly service review, going through the reporting with a client"></div>
         <div class="ico" data-ico="svc"></div>
-        <h4>Service management</h4>
+        <h3>Service management</h3>
         <p>Monthly reporting, a quarterly review and a forward plan for the estate. The part most providers skip, and the part that stops problems recurring.</p>
       </div>
     </div>
@@ -716,7 +783,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
     </div>
 
     <div class="incl-foot" style="margin:0 0 var(--s7)">
-      <h4>How project work is priced</h4>
+      <h3>How project work is priced</h3>
       <div class="row">
         <div><b>Fixed price, quoted up front</b>You see the number before anything begins. It does not move afterwards unless you change the scope, in writing</div>
         <div><b>Nothing starts without your say-so</b>No work is ever begun and invoiced afterwards. If it was not agreed, it does not happen</div>
@@ -727,42 +794,42 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
     <div class="g3 sol">
       <div class="card">
         <div class="ico" data-ico="m365"></div>
-        <h4>Microsoft 365 &amp; Entra ID</h4>
+        <h3>Microsoft 365 &amp; Entra ID</h3>
         <p>Tenant design, migration from on-premises or from another provider, licence rationalisation, and conditional access with multi-factor authentication enforced properly rather than left optional.</p>
         <div class="after"><b>Then included</b>Tenant administration, licence changes and day-to-day identity support</div>
       </div>
 
       <div class="card">
         <div class="ico" data-ico="migr"></div>
-        <h4>Cloud &amp; server migration</h4>
+        <h3>Cloud &amp; server migration</h3>
         <p>Moving line-of-business applications and file services off ageing hardware into Azure or a hosted platform — sized on what you actually use, rather than on whatever the last server was specified for.</p>
         <div class="after"><b>Then included</b>Monitoring, patching, capacity planning and a quarterly cost review</div>
       </div>
 
       <div class="card">
         <div class="ico" data-ico="net"></div>
-        <h4>Networks &amp; connectivity</h4>
+        <h3>Networks &amp; connectivity</h3>
         <p>Firewalls, switching, wireless surveys, links between sites and failover circuits — designed so that a single line going down is an inconvenience rather than a closure.</p>
         <div class="after"><b>Then included</b>Monitoring, firmware, and firewall rule changes on request</div>
       </div>
 
       <div class="card">
         <div class="ico" data-ico="sec"></div>
-        <h4>Security &amp; compliance evidence</h4>
+        <h3>Security &amp; compliance evidence</h3>
         <p>Endpoint detection and response, email security, phishing simulation, and the written policies and evidence pack your insurer or auditor is going to ask for before they ask for it.</p>
         <div class="after"><b>Then included</b>Ongoing monitoring, patching and an annual evidence refresh</div>
       </div>
 
       <div class="card">
         <div class="ico" data-ico="bak"></div>
-        <h4>Backup &amp; disaster recovery</h4>
+        <h3>Backup &amp; disaster recovery</h3>
         <p>Offsite replication, a documented recovery time you can hand to your insurer, and a restore that has actually been tested rather than one everybody assumes would work.</p>
         <div class="after"><b>Then included</b>Quarterly tested restores with the results sent to you</div>
       </div>
 
       <div class="card">
         <div class="ico" data-ico="tel"></div>
-        <h4>Business telephony</h4>
+        <h3>Business telephony</h3>
         <p>Cloud phone systems and Teams Phone, call flows that match how the business actually answers, and number porting handled without a day of silence in the middle of it.</p>
         <div class="after"><b>Then included</b>Call flow changes, user moves and monitoring</div>
       </div>
@@ -963,7 +1030,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
 
     <div class="incl">
       <div class="card">
-        <h4>What we commit to</h4>
+        <h3>What we commit to</h3>
         <ul>
           <li><b>Service credits</b> applied to your account automatically when we miss a published response time. No claim form, no process, nothing to prove</li>
           <li><b>Published response times</b> — 15 minutes for a P1, one hour for a P2, four hours for a P3, one business day for a P4. All written into the agreement</li>
@@ -976,7 +1043,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
       </div>
 
       <div class="card">
-        <h4>How support works</h4>
+        <h3>How support works</h3>
         <ul>
           <li><b>Unlimited support</b>, remote and onsite. No cap on tickets and no fair-use clause waiting in the small print</li>
           <li><b>No per-incident billing</b>, so nobody on your team hesitates before asking for help</li>
@@ -988,7 +1055,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
       </div>
 
       <div class="card">
-        <h4>What we take on</h4>
+        <h3>What we take on</h3>
         <ul>
           <li><b>Service desk</b> — the day to day, for every user, with every request measured</li>
           <li><b>End user computing</b> — laptops, desktops and mobiles from procurement through build, deployment and replacement</li>
@@ -1001,7 +1068,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
     </div>
 
     <div class="incl-foot">
-      <h4>And the risk stays with us</h4>
+      <h3>And the risk stays with us</h3>
       <div class="row">
         <div><b>No auto-renewal</b>The term ends when it ends. It does not roll over quietly while nobody is looking, and we write to you well before it expires either way</div>
         <div><b>Thirty days running in parallel</b>Your current provider stays in place. Nothing is switched off until we have proven it working on our side</div>
@@ -1036,7 +1103,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
     </div>
     <div class="fit">
       <div class="y">
-        <h4>A good fit</h4>
+        <h3>A good fit</h3>
         <ul>
           <li>Ten users or more</li>
           <li>Regulated, or handling sensitive client data</li>
@@ -1046,7 +1113,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
         </ul>
       </div>
       <div class="n">
-        <h4>Probably not</h4>
+        <h3>Probably not</h3>
         <ul>
           <li>Under ten users and unregulated — the economics do not work in your favour</li>
           <li>Looking for the cheapest hourly rate</li>
@@ -1143,7 +1210,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
         <p style="margin-top:var(--s4)">Managed IT with published response times, service credits as standard, and a way out if we fail to deliver them.</p>
       </div>
       <div>
-        <h5>Who we are</h5>
+        <h3>Who we are</h3>
         <ul>
           <li><a href="#why">Why Lacuna</a></li>
           <li><a href="#problem">The problem</a></li>
@@ -1152,14 +1219,14 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
         </ul>
       </div>
       <div>
-        <h5>What we do</h5>
+        <h3>What we do</h3>
         <ul>
           <li><a href="#services">Services</a></li>
           <li><a href="#solutions">Solutions</a></li>
         </ul>
       </div>
       <div>
-        <h5>Before you commit</h5>
+        <h3>Before you commit</h3>
         <ul>
           <li><a href="#pricing">What it costs</a></li>
           <li><a href="#fit">Who we work with</a></li>
@@ -1167,10 +1234,9 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
         </ul>
       </div>
       <div>
-        <h5>Contact</h5>
+        <h3>Contact</h3>
         <ul>
           <li><a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a></li>
-          <li><a href="tel:+12145550100">+1 214 555 0100</a></li>
           <li><a href="#contact">Send an enquiry</a></li>
           <li><a href="#book">Book a consultation</a></li>
         </ul>
@@ -1179,11 +1245,12 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
     <div class="f-bot">
       <p class="f-legal">
         <!-- COMPANIES ACT 2006 — all four items below are legally required on a UK company website -->
-        Lacuna Ltd &middot; Registered in England and Wales, company number <span data-fill>00000000</span> &middot;
-        Registered office: <span data-fill>Address line, Town, Postcode, United Kingdom</span>.
+        Lacuna Ltd &middot; Registered in England and Wales, company number 17507110 &middot;
+        Registered office: Elizabeth Suite, 3rd Floor, 207 Regent Street, London, W1B 3HH, United Kingdom &middot;
+        ICO registration ZC277648.
         &copy; <span id="yr">2026</span> Lacuna Ltd. All rights reserved.
       </p>
-      <p><a href="privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of use</a> &nbsp;&middot;&nbsp; <a href="#" id="cookieReopen">Cookie settings</a></p>
+      <p><a href="privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp; <a href="#" id="cookieReopen">Cookie settings</a></p>
     </div>
   </div>
 </footer>
@@ -1207,7 +1274,13 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
   "image":"https://wearelacuna.com/assets/og-image.png",
   "description":"Managed IT services with published response times, automatic service credits, hot-spare devices, and the right to terminate on three months' notice after three consecutive months of missed service levels — with a free transition to another provider if you do.",
   "email":"hello@wearelacuna.com",
-  "telephone":"+1-214-555-0100",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Elizabeth Suite, 3rd Floor, 207 Regent Street",
+    "addressLocality":"London",
+    "postalCode":"W1B 3HH",
+    "addressCountry":"GB"
+  },
   "areaServed":"US",
   "priceRange":"$$",
   "serviceType":["Managed IT services","IT support","Cyber security","Cloud and infrastructure","Network management"]
@@ -1509,8 +1582,8 @@ function wireForm(){
           track('lead_below_minimum',{users:data.users,industry:data.industry});
         } else {
           msg.innerHTML='<h3>Thank you — we have got it</h3>'+
-            '<p>We reply within one business day, usually sooner. If it is urgent, call '+
-            '<a class="btn-link" style="color:var(--green-300);border-color:var(--green-300)" href="tel:+12145550100">+1 214 555 0100</a>.</p>'+
+            '<p>We reply within one business day, usually sooner. If it is urgent, reply to the '+
+            'confirmation email and mark it urgent — it reaches the same people.</p>'+
             '<p style="margin-top:var(--s3)">If you would rather skip the back and forth, you can '+
             '<a class="btn-link" style="color:var(--green-300);border-color:var(--green-300)" href="#book">book a consultation</a> straight away.</p>';
           track('generate_lead',{users:data.users,industry:data.industry,fit:data.fit});
@@ -1530,8 +1603,25 @@ function wireForm(){
 /* ==============================================================
    6 — CAL.COM
    ============================================================== */
+/* The embed is ~2.3MB of JavaScript, a webfont and a timezone list, and it
+   used to run on page load — locking the main thread for most of a second
+   for every visitor, including the majority who never scroll this far.
+   It now loads when the booking section comes within a screen of the
+   viewport, which is early enough that it is always ready before anyone
+   reaches it. Falls back to loading immediately where IntersectionObserver
+   is unavailable, so nobody ever loses the calendar. */
 function wireCal(){
   var host=document.getElementById('cal-embed'); if(!host) return;
+  if(!('IntersectionObserver' in window)){ loadCal(); return; }
+  var io=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){ io.disconnect(); loadCal(); }
+  },{rootMargin:'100% 0px'});
+  io.observe(host);
+}
+
+function loadCal(){
+  var host=document.getElementById('cal-embed'); if(!host||window.__calLoaded) return;
+  window.__calLoaded=true;
   (function(C,A,L){var p=function(a,ar){a.q.push(ar)};var d=C.document;
     C.Cal=C.Cal||function(){var cal=C.Cal,ar=arguments;
       if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}
@@ -1583,10 +1673,25 @@ function wireHero(){
   var btn   =document.getElementById('heroPause');
   if(slides.length<2) return;
 
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mq = window.matchMedia;
+  var reduce   = mq && mq('(prefers-reduced-motion: reduce)').matches;
   var saveData = navigator.connection && navigator.connection.saveData;
-  var noVideo = reduce || saveData;
+  // Phones and tablets get posters only. The clips are several megabytes
+  // each, they sit behind a 60% scrim at a size nobody studies, and mobile
+  // is exactly where the download costs the visitor money and the page its
+  // score. Desktop still gets the motion.
+  var smallScreen = mq && mq('(max-width: 900px)').matches;
+  var noVideo = reduce || saveData || smallScreen;
   var i=0, timer=null, paused=false, HOLD=7000;
+
+  // Video is never on the critical path. The poster is already painted by
+  // the time this runs, so fetching the clip during an idle moment costs
+  // the visitor nothing visible and keeps multi-megabyte requests out of
+  // the window that decides first paint and blocking time.
+  function idle(fn){
+    if(window.requestIdleCallback) window.requestIdleCallback(fn,{timeout:3000});
+    else setTimeout(fn,1500);
+  }
 
   var PLAY='<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0l8 5-8 5z"/></svg>';
   var PAUSE='<svg viewBox="0 0 10 10" aria-hidden="true"><rect x="1" y="0" width="3" height="10"/><rect x="6" y="0" width="3" height="10"/></svg>';
@@ -1612,8 +1717,12 @@ function wireHero(){
       d.classList.toggle('on',k===i);
       d.setAttribute('aria-current', k===i ? 'true' : 'false');
     });
-    loadVideo(i);
-    loadVideo((i+1)%slides.length);
+    // current slide first, and only warm the next one once that is done —
+    // two multi-megabyte fetches racing each other helps nobody
+    idle(function(){
+      loadVideo(i);
+      idle(function(){ loadVideo((i+1)%slides.length) });
+    });
     slides.forEach(function(s,k){
       var v=s.querySelector('video'); if(!v) return;
       if(k===i){ var p=v.play(); if(p&&p.catch) p.catch(function(){}) } else v.pause();

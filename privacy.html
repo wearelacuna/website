@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy policy — Lacuna</title>
+<meta name="description" content="How Lacuna collects, uses and protects personal data, under UK GDPR and the Texas Data Privacy and Security Act.">
+<link rel="canonical" href="https://wearelacuna.com/privacy.html">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#15171A">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15171A; --slate:#3E4246; --graphite:#6E7276; --ash:#9B9A96;
+  --silver:#C9C7C1; --line:#E2E0DA; --mist:#EFEDE8; --paper:#F7F6F2;
+  --green:#1D865A; --green-700:#166444; --green-300:#53C696; --green-50:#EDF7F3;
+  --amber:#9A6B12; --red:#9F1239;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;--s9:96px;
+  --wrap:1430px; --gut:40px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+a{color:var(--green);text-decoration:none;border-bottom:1px solid rgba(29,134,90,.35)}
+a:hover{border-bottom-color:var(--green)}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.skip{position:absolute;left:-9999px;background:var(--green);color:#fff;padding:12px 20px;z-index:200}
+.skip:focus{left:0}
+
+/* header */
+header{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.94);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+header .inner{display:flex;align-items:center;justify-content:space-between;gap:var(--s5);padding:var(--s4) 0}
+.wm{line-height:1;white-space:nowrap;display:inline-block;font-weight:500;letter-spacing:-.035em;
+  font-kerning:none;font-variant-ligatures:none;font-feature-settings:"kern" 0,"liga" 0;
+  text-decoration:none;border:0;color:var(--ink)}
+.wm svg{display:inline-block}
+header nav a{font-size:.92rem;color:var(--graphite);border:0;margin-left:var(--s5)}
+header nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s8);position:relative;overflow:hidden}
+.hero .ghost{position:absolute;right:-8%;bottom:-40%;width:48vw;max-width:560px;opacity:.05;z-index:0}
+.hero .wrap{position:relative;z-index:2}
+.hero .eb{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green-300);
+  font-weight:600;display:block;margin-bottom:var(--s4)}
+.hero h1{font-size:clamp(2.3rem,5vw,3.4rem);font-weight:600;letter-spacing:-.04em;line-height:1.05}
+.hero p{margin-top:var(--s5);color:rgba(247,246,242,.66);max-width:62ch;font-size:1.08rem}
+.meta{margin-top:var(--s7);padding-top:var(--s5);border-top:1px solid rgba(247,246,242,.16);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);font-size:.92rem}
+.meta b{display:block;font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(247,246,242,.34);font-weight:600;margin-bottom:var(--s2)}
+.meta span{color:rgba(247,246,242,.78)}
+@media(max-width:700px){.meta{grid-template-columns:1fr;gap:var(--s4)}}
+
+/* layout */
+.doc{display:grid;grid-template-columns:250px minmax(0,1fr);gap:var(--s9);padding:var(--s9) 0 var(--s9)}
+@media(max-width:940px){.doc{grid-template-columns:1fr;gap:var(--s7)}}
+.toc{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 130px);overflow:auto}
+@media(max-width:940px){.toc{position:static;max-height:none;border:1px solid var(--line);padding:var(--s5);background:#fff}}
+.toc h2{font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ash);font-weight:600;
+  margin-bottom:var(--s4)}
+.toc ol{list-style:none;counter-reset:t;display:grid;gap:var(--s2)}
+.toc li{counter-increment:t}
+.toc a{display:block;font-size:.88rem;color:var(--graphite);border:0;line-height:1.45;padding:3px 0}
+.toc a::before{content:counter(t) ". ";color:var(--silver)}
+.toc a:hover{color:var(--green)}
+
+/* content */
+.body h2{font-size:1.45rem;font-weight:600;letter-spacing:-.025em;line-height:1.2;
+  margin:var(--s9) 0 var(--s4);scroll-margin-top:96px}
+.body h2:first-child{margin-top:0}
+.body h2 .n{color:var(--green);font-size:.78rem;letter-spacing:.12em;font-weight:600;
+  display:block;margin-bottom:var(--s2)}
+.body h3{font-size:1.08rem;font-weight:600;letter-spacing:-.015em;margin:var(--s6) 0 var(--s3)}
+.body p{margin-bottom:var(--s4);color:var(--slate);max-width:72ch}
+.body strong{color:var(--ink);font-weight:600}
+.body ul{list-style:none;display:grid;gap:var(--s3);margin:0 0 var(--s5)}
+.body li{color:var(--slate);padding-left:22px;position:relative;max-width:72ch}
+.body li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--green)}
+.body li strong{color:var(--ink)}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);background:#fff;margin:var(--s5) 0 var(--s6)}
+table{width:100%;border-collapse:collapse;font-size:.93rem;min-width:560px}
+th{text-align:left;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ash);
+  font-weight:600;padding:var(--s4) var(--s5) var(--s3);border-bottom:1px solid var(--line);vertical-align:bottom}
+td{padding:var(--s4) var(--s5);border-bottom:1px solid var(--line);color:var(--slate);vertical-align:top;line-height:1.6}
+tr:last-child td{border-bottom:none}
+td:first-child{color:var(--ink);font-weight:500}
+
+.box{border:1px solid var(--line);border-left:4px solid var(--green);padding:var(--s5) var(--s6);
+  background:#fff;margin:var(--s5) 0 var(--s6)}
+.box h4{font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);
+  font-weight:600;margin-bottom:var(--s3)}
+.box p:last-child{margin-bottom:0}
+.box.warn{border-left-color:var(--amber)}
+.box.warn h4{color:var(--amber)}
+
+/* placeholders */
+.ph{background:#FFF3C4;box-shadow:inset 0 0 0 1px #E3C24A;padding:1px 5px;border-radius:2px;
+  color:#6B5310;font-weight:500}
+.hero .ph{background:rgba(247,246,242,.12);box-shadow:inset 0 0 0 1px rgba(255,220,120,.5);color:#FFDC78}
+.phbar{position:fixed;right:var(--s5);bottom:var(--s5);z-index:120;background:var(--ink);color:var(--paper);
+  border:1px solid #2A2E33;border-left:4px solid var(--amber);padding:var(--s4) var(--s5);
+  font-size:.83rem;max-width:300px;line-height:1.5;display:none}
+.phbar.show{display:block}
+.phbar b{color:#FFDC78;display:block;margin-bottom:4px;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+.phbar button{margin-top:var(--s3);font-family:inherit;font-size:.7rem;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;padding:7px 13px;border:1px solid rgba(247,246,242,.28);background:transparent;
+  color:var(--paper);border-radius:4px;cursor:pointer}
+
+.btn{display:inline-flex;align-items:center;font-size:.92rem;font-weight:500;padding:12px 22px;
+  border-radius:4px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;
+  font-family:inherit;text-decoration:none}
+.btn:hover{background:var(--ink);color:var(--paper)}
+
+/* footer */
+footer{background:var(--ink);color:var(--paper);padding:var(--s8) 0 var(--s7);margin-top:var(--s9)}
+footer a{color:rgba(247,246,242,.66);border-bottom-color:rgba(247,246,242,.24)}
+footer a:hover{color:var(--paper)}
+.f-bot{display:flex;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;font-size:.83rem;
+  color:rgba(247,246,242,.38);line-height:1.6;padding-top:var(--s5);border-top:1px solid rgba(247,246,242,.14);
+  margin-top:var(--s6)}
+.f-legal{max-width:62ch}
+
+/* cookie bar */
+.cookie{position:fixed;left:var(--s5);right:var(--s5);bottom:var(--s5);z-index:150;background:var(--ink);
+  color:var(--paper);border:1px solid #2A2E33;border-left:4px solid var(--green);padding:var(--s5) var(--s6);
+  display:none;gap:var(--s5);align-items:center;justify-content:space-between;flex-wrap:wrap;
+  max-width:760px;margin:0 auto;box-shadow:0 6px 40px rgba(0,0,0,.28)}
+.cookie.show{display:flex}
+.cookie p{font-size:.92rem;color:rgba(247,246,242,.68);max-width:46ch;margin:0}
+.cookie .acts{display:flex;gap:var(--s3)}
+.cookie button{font-family:inherit;font-size:.88rem;font-weight:500;padding:11px 20px;border-radius:4px;
+  cursor:pointer;border:1px solid transparent}
+.cookie .ok{background:var(--green);color:#fff}
+.cookie .no{background:transparent;color:var(--paper);border-color:rgba(247,246,242,.42)}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap inner">
+    <a class="wm" href="index.html" style="font-size:25px" data-wm aria-label="Lacuna, home">Lacuna</a>
+    <nav><a href="index.html">Back to site</a><a href="index.html#contact">Contact</a></nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="ghost" id="ghost" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eb">Legal</span>
+    <h1>Privacy policy</h1>
+    <p>What we collect, why we collect it, how long we keep it and what you can make us do about it. Written to be read rather than to be defensible.</p>
+    <div class="meta">
+      <div><b>Version</b><span>2.0</span></div>
+      <div><b>Effective</b><span>19 October 2026</span></div>
+      <div><b>Last reviewed</b><span>16 October 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<main id="main" class="wrap doc">
+
+  <!-- ================= CONTENTS ================= -->
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">Who we are</a></li>
+      <li><a href="#s2">The short version</a></li>
+      <li><a href="#s3">What this policy covers</a></li>
+      <li><a href="#s4">Personal data we collect</a></li>
+      <li><a href="#s5">Why we use it, and our lawful basis</a></li>
+      <li><a href="#s6">Cookies and similar technologies</a></li>
+      <li><a href="#s7">Who we share it with</a></li>
+      <li><a href="#s8">International transfers</a></li>
+      <li><a href="#s9">How long we keep it</a></li>
+      <li><a href="#s10">How we protect it</a></li>
+      <li><a href="#s11">Your rights under UK law</a></li>
+      <li><a href="#s12">Your rights under Texas law</a></li>
+      <li><a href="#s13">Other US state privacy laws</a></li>
+      <li><a href="#s14">Marketing</a></li>
+      <li><a href="#s15">Automated decisions</a></li>
+      <li><a href="#s16">Children</a></li>
+      <li><a href="#s17">When you are our client</a></li>
+      <li><a href="#s18">Changes to this policy</a></li>
+      <li><a href="#s19">How to complain</a></li>
+      <li><a href="#s20">Contact us</a></li>
+    </ol>
+  </nav>
+
+  <!-- ================= BODY ================= -->
+  <div class="body">
+
+    <h2 id="s1"><span class="n">Section 1</span>Who we are</h2>
+    <p><strong>Lacuna Ltd</strong> is a company registered in England and Wales, company number
+      17507110, with its registered office at
+      Elizabeth Suite, 3rd Floor, 207 Regent Street, London, W1B 3HH, United Kingdom. We provide managed IT
+      services to businesses, principally in the United States.</p>
+    <p>For the personal data described in this policy, Lacuna Ltd is the <strong>controller</strong> — meaning we
+      decide why and how it is used, and we are accountable for it.</p>
+    <p>We are registered with the UK Information Commissioner's Office under registration number
+      <span class="ph">ZA000000</span>.</p>
+    <p>Privacy questions go to <a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a>. We have not
+      appointed a statutory Data Protection Officer, because we are not required to — that obligation applies
+      to public authorities, to organisations whose core activity is large-scale monitoring, and to large-scale
+      processing of special category data, none of which describe us. Privacy enquiries are handled directly by
+      the people running the business.</p>
+
+    <h2 id="s2"><span class="n">Section 2</span>The short version</h2>
+    <div class="box">
+      <h4>In plain terms</h4>
+      <p>We collect what you give us when you enquire, book a call or email us — and some anonymous usage data
+        if you agree to analytics cookies. We use it to reply to you and to run our business.</p>
+      <p><strong>We do not sell personal data. We have never sold personal data. We do not share it for
+        cross-context behavioural advertising.</strong></p>
+      <p>You can ask us what we hold, ask us to correct it, or ask us to delete it, and we will do so within one
+        month. If you think we have got something wrong you can complain to a regulator, and section 19 tells
+        you which one and how.</p>
+    </div>
+
+    <h2 id="s3"><span class="n">Section 3</span>What this policy covers</h2>
+    <p>This policy applies to personal data we handle <strong>as a controller</strong>:</p>
+    <ul>
+      <li>Visitors to <a href="index.html">wearelacuna.com</a></li>
+      <li>People who enquire, book a consultation, call or email us</li>
+      <li>Contacts at our clients, prospective clients and suppliers</li>
+      <li>People who apply to work with us</li>
+    </ul>
+    <p>It does <strong>not</strong> cover personal data we handle inside a client's IT systems while delivering
+      managed services. There we act as a <strong>processor</strong> on that client's instructions, and the
+      terms are set out in the data processing agreement that forms part of our managed service agreement.
+      Section 17 explains the difference and why it matters.</p>
+
+    <h2 id="s4"><span class="n">Section 4</span>Personal data we collect</h2>
+
+    <h3>4.1 Information you give us</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Where</th><th>What</th></tr></thead>
+      <tbody>
+        <tr><td>Enquiry form</td><td>Name, company, work email, phone number, number of users, industry, how your IT is handled today, timescale, and anything you type into the message field</td></tr>
+        <tr><td>Consultation booking</td><td>Name, email, the time you selected, and any notes you add. Handled by Cal.com on our behalf</td></tr>
+        <tr><td>Email and phone</td><td>Your contact details and the content of the correspondence</td></tr>
+        <tr><td>Becoming a client</td><td>Billing contacts, site addresses, named users for support, and the contact details of people authorised to raise tickets</td></tr>
+        <tr><td>Job applications</td><td>Your CV and anything you send with it</td></tr>
+      </tbody>
+    </table></div>
+    <p>You do not have to give us any of this. If you do not, we cannot reply to an enquiry or provide a
+      service — but nothing on this site requires personal data simply to read it.</p>
+
+    <h3>4.2 Information collected automatically</h3>
+    <ul>
+      <li><strong>Analytics data</strong>, only if you accept analytics cookies: pages viewed, approximate
+        location derived from a truncated IP address, device and browser type, and how you arrived. Your IP
+        address is anonymised before storage.</li>
+      <li><strong>Server logs</strong>, kept by our hosting provider for security and fault diagnosis: IP
+        address, timestamp, the file requested and the response code.</li>
+    </ul>
+    <p>If your browser sends a <strong>Global Privacy Control</strong> or <strong>Do Not Track</strong> signal,
+      we treat that as a refusal of analytics cookies and do not show you the consent banner at all.</p>
+
+    <h3>4.3 Sensitive data</h3>
+    <p>We do not ask for special category data under UK GDPR, or sensitive data as defined by the Texas Data
+      Privacy and Security Act. <strong>We do not sell sensitive personal data. We do not sell biometric
+      personal data.</strong> We do not process biometric or genetic data at all.</p>
+    <p>If you volunteer something sensitive in a free-text field, we will use it only to answer you and will
+      not retain it beyond that purpose.</p>
+
+    <h2 id="s5"><span class="n">Section 5</span>Why we use it, and our lawful basis</h2>
+    <p>UK GDPR requires us to have a lawful basis for each purpose. Here they are.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Purpose</th><th>Data</th><th>Lawful basis</th></tr></thead>
+      <tbody>
+        <tr><td>Replying to an enquiry or booking</td><td>Contact details, enquiry content</td><td><strong>Legitimate interests</strong> — responding to someone who contacted us. Where it leads to a quote, <strong>steps prior to entering a contract</strong></td></tr>
+        <tr><td>Delivering the managed service</td><td>Client contacts, site and user details</td><td><strong>Performance of a contract</strong></td></tr>
+        <tr><td>Invoicing, accounts, tax records</td><td>Billing contacts, transaction records</td><td><strong>Legal obligation</strong> under UK company and tax law</td></tr>
+        <tr><td>Website analytics</td><td>Usage data</td><td><strong>Consent</strong>, which you can withdraw at any time</td></tr>
+        <tr><td>Security, fraud prevention, fault diagnosis</td><td>Server logs</td><td><strong>Legitimate interests</strong> — keeping our systems and yours secure</td></tr>
+        <tr><td>Business-to-business marketing</td><td>Work contact details</td><td><strong>Legitimate interests</strong>, with an opt-out in every message. See section 14</td></tr>
+        <tr><td>Recruitment</td><td>Application materials</td><td><strong>Legitimate interests</strong> and steps prior to an employment contract</td></tr>
+        <tr><td>Defending or bringing legal claims</td><td>Whatever is relevant</td><td><strong>Legitimate interests</strong> — establishing or defending legal rights</td></tr>
+      </tbody>
+    </table></div>
+    <p>Where we rely on legitimate interests we have weighed our interest against your rights. You can ask us
+      for that assessment and we will send it to you.</p>
+
+    <h2 id="s6"><span class="n">Section 6</span>Cookies and similar technologies</h2>
+    <p>We use as few as we can get away with.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Cookie or storage</th><th>Set by</th><th>Purpose</th><th>Duration</th></tr></thead>
+      <tbody>
+        <tr><td>lacuna-consent</td><td>This site</td><td>Remembers whether you accepted or rejected analytics, so we do not ask again. Strictly necessary — it exists only to honour your choice</td><td>Until you clear it</td></tr>
+        <tr><td>_ga</td><td>Google Analytics</td><td>Distinguishes one visitor from another. <strong>Only set if you accept</strong></td><td>2 years</td></tr>
+        <tr><td>_ga_&lt;ID&gt;</td><td>Google Analytics</td><td>Maintains session state. <strong>Only set if you accept</strong></td><td>2 years</td></tr>
+        <tr><td>Cal.com cookies</td><td>Cal.com</td><td>Set only when you interact with the booking calendar, to operate the booking</td><td>Session and up to 1 year</td></tr>
+      </tbody>
+    </table></div>
+    <p>Under UK law analytics cookies require your <strong>consent before they are set</strong>, not merely an
+      opportunity to opt out afterwards. Nothing analytical loads on this site until you click Accept.</p>
+    <p><button class="btn" id="reopen" type="button">Change your cookie preferences</button></p>
+
+    <h2 id="s7"><span class="n">Section 7</span>Who we share it with</h2>
+    <p>We share personal data only with organisations that help us run the business, and only what they need.
+      Each is bound by a contract that restricts what they may do with it.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Who</th><th>What they do</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td>Web3Forms</td><td>Delivers enquiry form submissions to our inbox</td><td>United States</td></tr>
+        <tr><td>Cal.com</td><td>Runs the consultation booking calendar</td><td>United States</td></tr>
+        <tr><td>Google (Analytics)</td><td>Website analytics, only with your consent</td><td>United States and Ireland</td></tr>
+        <tr><td>GitHub Pages (GitHub, Inc., a Microsoft company)</td><td>Serves this website and keeps server logs, which include IP addresses</td><td>United States, via a global content delivery network</td></tr>
+        <tr><td>Microsoft 365 (Microsoft Ireland Operations Limited)</td><td>Our business email and calendars</td><td>United Kingdom</td></tr>
+      </tbody>
+    </table></div>
+    <p>We may also disclose personal data where the law requires it, to professional advisers under a duty of
+      confidence, or to a buyer if the business is sold — in which case you would be told beforehand.</p>
+    <div class="box">
+      <h4>What we never do</h4>
+      <p>We do not sell personal data, for money or for anything else of value. We do not share it for
+        cross-context behavioural advertising or targeted advertising. We do not process it for profiling that
+        produces legal or similarly significant effects. If that ever changes, this policy will change first
+        and we will tell you before it takes effect.</p>
+    </div>
+
+    <h2 id="s8"><span class="n">Section 8</span>International transfers</h2>
+    <p>This is more involved for us than for most, and worth being clear about.</p>
+    <p>We are a <strong>UK company</strong>. Most of our clients and site visitors are in the
+      <strong>United States</strong>. Several of our suppliers are also American. So personal data routinely
+      moves between the UK and the US in both directions.</p>
+    <p>For transfers out of the UK we rely on one of the following, depending on the supplier:</p>
+    <ul>
+      <li>The <strong>UK Extension to the EU–US Data Privacy Framework</strong>, where the supplier is
+        certified under it</li>
+      <li>The <strong>UK International Data Transfer Agreement</strong>, or the UK Addendum to the European
+        Commission's standard contractual clauses</li>
+      <li><strong>UK adequacy regulations</strong>, where the destination country has been found adequate</li>
+    </ul>
+    <p>In each case we also carry out a transfer risk assessment and apply additional safeguards — encryption
+      in transit and at rest, and minimising what is sent in the first place. You can ask us which mechanism
+      applies to a specific supplier and we will tell you.</p>
+
+    <h2 id="s9"><span class="n">Section 9</span>How long we keep it</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>What</th><th>How long</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Enquiries that do not become clients</td><td>24 months from last contact</td><td>Business development cycles in this market are long; people often return</td></tr>
+        <tr><td>Client records</td><td>6 years after the agreement ends</td><td>UK limitation periods for contract claims and statutory record keeping</td></tr>
+        <tr><td>Accounting and tax records</td><td>6 years from the end of the financial year</td><td>Required by UK law</td></tr>
+        <tr><td>Email correspondence</td><td>6 years</td><td>Evidential value and continuity of service</td></tr>
+        <tr><td>Booking records</td><td>24 months</td><td>Record of contact and no-shows</td></tr>
+        <tr><td>Analytics data</td><td>14 months</td><td>Google Analytics retention setting, the shortest available</td></tr>
+        <tr><td>Server logs</td><td>90 days</td><td>Security investigation and fault diagnosis</td></tr>
+        <tr><td>Unsuccessful job applications</td><td>12 months</td><td>To consider you for other roles, unless you ask us not to</td></tr>
+      </tbody>
+    </table></div>
+    <p>When a period ends we delete the data or anonymise it so it can no longer identify anyone. Backups are
+      overwritten on their own cycle, so a deleted record may persist in a backup for a short period before
+      being written over.</p>
+
+    <h2 id="s10"><span class="n">Section 10</span>How we protect it</h2>
+    <ul>
+      <li>Encryption in transit, and at rest where the system supports it</li>
+      <li>Multi-factor authentication on every account that holds personal data</li>
+      <li>Access on a least-privilege basis, reviewed periodically</li>
+      <li>Supplier due diligence before anything is shared, and written data processing terms</li>
+      <li>A documented breach procedure — we will notify the ICO within 72 hours where required, and tell you
+        directly where there is a high risk to you</li>
+    </ul>
+    <p>No system is perfectly secure, and anyone who tells you otherwise is selling something. What we can
+      commit to is that we will tell you promptly and honestly if something goes wrong.</p>
+
+    <h2 id="s11"><span class="n">Section 11</span>Your rights under UK law</h2>
+    <p>Under UK GDPR you have the right to:</p>
+    <ul>
+      <li><strong>Be informed</strong> — which is what this document is for</li>
+      <li><strong>Access</strong> a copy of the personal data we hold about you</li>
+      <li><strong>Rectification</strong> of anything inaccurate or incomplete</li>
+      <li><strong>Erasure</strong> — the so-called right to be forgotten, where no overriding reason to keep it applies</li>
+      <li><strong>Restrict processing</strong> while a dispute about accuracy or legitimate interests is resolved</li>
+      <li><strong>Data portability</strong> — receive data you gave us in a machine-readable format, or have it sent elsewhere</li>
+      <li><strong>Object</strong> to processing based on legitimate interests, and <strong>absolutely</strong> to direct marketing</li>
+      <li><strong>Withdraw consent</strong> at any time, where consent is the basis — which does not affect what was done before you withdrew it</li>
+    </ul>
+    <p>Email <a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a>. We respond within
+      <strong>one month</strong>, extendable by two further months for complex requests, in which case we will
+      tell you inside the first month and explain why. <strong>There is no charge</strong> unless a request is
+      manifestly unfounded or excessive.</p>
+    <p>We may ask you to verify your identity before we act. That is a protection for you, not an obstacle for
+      us — sending someone's personal data to the wrong person is itself a breach.</p>
+
+    <h2 id="s12"><span class="n">Section 12</span>Your rights under Texas law</h2>
+    <p>If you are a Texas resident acting in an individual or household capacity, the
+      <strong>Texas Data Privacy and Security Act</strong> gives you the right to:</p>
+    <ul>
+      <li><strong>Confirm</strong> whether we process your personal data, and <strong>access</strong> it</li>
+      <li><strong>Correct</strong> inaccuracies, taking into account the nature of the data and our purpose</li>
+      <li><strong>Delete</strong> personal data you provided or that we obtained about you</li>
+      <li><strong>Obtain a copy</strong> in a portable, readily usable format, where processing is automated</li>
+      <li><strong>Opt out</strong> of targeted advertising, the sale of personal data, or profiling that
+        produces legal or similarly significant effects</li>
+    </ul>
+    <div class="box">
+      <h4>On that last one</h4>
+      <p>There is currently nothing to opt out of. <strong>We do not engage in targeted advertising, we do not
+        sell personal data, and we do not carry out profiling that produces legal or similarly significant
+        effects.</strong> The right is stated because the law requires us to state it.</p>
+    </div>
+    <p><strong>How to exercise these rights.</strong> Email
+      <a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a> with the subject line
+      <em>Texas privacy request</em>. We respond within <strong>45 days</strong>, extendable once by a further
+      45 days where reasonably necessary, in which case we will tell you inside the first period.</p>
+    <p><strong>Authorised agents.</strong> You may use an agent to make a request on your behalf. We will ask
+      for proof that you authorised them.</p>
+
+    <h3>12.1 If we refuse — your right to appeal</h3>
+    <p>If we decline to act on your request we will tell you why, within the response period. You may then
+      appeal by emailing <a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a> with the subject
+      line <em>Texas privacy appeal</em>.</p>
+    <p>We will respond in writing within <strong>60 days</strong>, explaining the reasons for our decision. If
+      the appeal is denied, we will provide you with a method to contact the
+      <strong>Texas Attorney General</strong> to submit a complaint, as the Act requires.</p>
+
+    <h2 id="s13"><span class="n">Section 13</span>Other US state privacy laws</h2>
+    <p>Several other states have comprehensive privacy laws with rights broadly similar to those in section 12
+      — including California, Virginia, Colorado, Connecticut, Utah, Oregon and Montana, among others.</p>
+    <p>Where one of those laws applies to you, <strong>we will honour the equivalent rights on the same
+      terms</strong>. Use the same contact route and tell us which state you are in.</p>
+
+    <h2 id="s14"><span class="n">Section 14</span>Marketing</h2>
+    <p>We may send occasional emails about our services to business contacts. Under UK PECR we may do this to
+      corporate subscribers on the basis of legitimate interests, but:</p>
+    <ul>
+      <li>Every message carries a one-click unsubscribe</li>
+      <li>We act on an unsubscribe immediately, and certainly within 48 hours</li>
+      <li>We do not pass your details to anyone else for their marketing. Ever</li>
+      <li>We do not buy contact lists</li>
+    </ul>
+    <p>Unsubscribing from marketing does not stop service messages — invoices, incident notifications,
+      scheduled maintenance and the like — because those are part of the service you are paying for.</p>
+
+    <h2 id="s15"><span class="n">Section 15</span>Automated decisions</h2>
+    <p>We do not make decisions producing legal or similarly significant effects about you by automated means.</p>
+    <p>One point of honesty: our enquiry form applies a <strong>simple rule</strong> that flags enquiries below
+      ten users in non-regulated sectors, and shows a message saying we are probably not the right fit. That is
+      a suggestion on a web page, not a decision about you — a person reads every enquiry, and you can reply
+      and say why your situation is different.</p>
+
+    <h2 id="s16"><span class="n">Section 16</span>Children</h2>
+    <p>Our services are sold to businesses and this site is not directed at children. We do not knowingly
+      collect personal data from anyone under 18. If you believe a child has given us personal data, email
+      <a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a> and we will delete it.</p>
+
+    <h2 id="s17"><span class="n">Section 17</span>When you are our client</h2>
+    <p>Delivering managed IT means our engineers can reach systems that hold your personal data — email,
+      files, databases, line-of-business applications. This matters, so here is the position plainly.</p>
+    <ul>
+      <li>For that data, <strong>you are the controller and we are your processor</strong>. We act only on your
+        documented instructions</li>
+      <li>The terms are in the <strong>data processing agreement</strong> forming part of your managed service
+        agreement, which covers confidentiality, security, sub-processors, breach notification, audit rights
+        and what happens to data when the agreement ends</li>
+      <li>We do not use your data for our own purposes. Not for analytics, not for product development, not to
+        train anything</li>
+      <li>Access is least-privilege and logged</li>
+    </ul>
+    <p>If one of your staff or customers asks us to exercise their rights over data in your systems, we will
+      refer them to you and tell you it happened — because it is your decision to make, not ours.</p>
+
+    <h2 id="s18"><span class="n">Section 18</span>Changes to this policy</h2>
+    <p>We update this policy when what we do changes, or when the law does. The version number and dates at the
+      top of the page tell you where you stand.</p>
+    <p>For material changes — a new purpose, a new category of recipient, a change of lawful basis — we will
+      give <strong>reasonable notice before the change takes effect</strong>, by email where we hold your
+      address. We will not change this policy retrospectively.</p>
+
+    <h2 id="s19"><span class="n">Section 19</span>How to complain</h2>
+    <p>Come to us first if you can — <a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a>. Most
+      things are a misunderstanding we can fix quickly. But you are entitled to go straight to a regulator, and
+      nothing here requires you to contact us first.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>If you are in</th><th>Regulator</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td>The UK</td><td>Information Commissioner's Office</td><td><a href="https://ico.org.uk/make-a-complaint/">ico.org.uk/make-a-complaint</a><br>Helpline 0303 123 1113<br>Wycliffe House, Water Lane, Wilmslow, Cheshire SK9 5AF</td></tr>
+        <tr><td>Texas</td><td>Office of the Attorney General</td><td><a href="https://www.texasattorneygeneral.gov/consumer-protection/file-consumer-complaint">texasattorneygeneral.gov</a><br>Consumer Protection Division</td></tr>
+        <tr><td>Another US state</td><td>Your state Attorney General</td><td>Most operate an online consumer complaint form</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="s20"><span class="n">Section 20</span>Contact us</h2>
+    <div class="tbl"><table>
+      <tbody>
+        <tr><td>Privacy matters</td><td><a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a></td></tr>
+        <tr><td>General enquiries</td><td><a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a></td></tr>
+        <tr><td>Registered office</td><td>Elizabeth Suite, 3rd Floor, 207 Regent Street, London, W1B 3HH, United Kingdom</td></tr>
+        <tr><td>Company number</td><td>17507110 &middot; Registered in England and Wales</td></tr>
+        <tr><td>ICO registration</td><td><span class="ph">ZA000000</span></td></tr>
+      </tbody>
+    </table></div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="wm" href="index.html" style="font-size:27px;color:var(--paper)" data-wm aria-label="Lacuna">Lacuna</a>
+    <div class="f-bot">
+      <p class="f-legal">
+        Lacuna Ltd &middot; Registered in England and Wales, company number 17507110 &middot;
+        Registered office: Elizabeth Suite, 3rd Floor, 207 Regent Street, London, W1B 3HH, United Kingdom.
+        &copy; <span id="yr">2026</span> Lacuna Ltd.
+      </p>
+      <p><a href="index.html">Home</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of use</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie" id="cookieBar" role="dialog" aria-label="Cookie consent">
+  <p>We would like to use analytics cookies to understand how this site is used. They are not set unless you agree.</p>
+  <div class="acts">
+    <button class="ok" id="ckAccept" type="button">Accept</button>
+    <button class="no" id="ckReject" type="button">Reject</button>
+  </div>
+</div>
+
+<script>
+var CONFIG={ GA4_ID:"G-XXXXXXXXXX" };
+(function(){
+"use strict";
+var GREEN='#1D865A', LETTERS=['L','a','c','u','n','a'];
+var SW=0.50, CK=0.74, AP=70, GAPS=[0,0,0,0,0], ST=null;
+
+function strokeOf(){
+  if(ST) return ST;
+  try{
+    var S=240,cv=document.createElement('canvas');
+    cv.width=Math.round(S*1.4);cv.height=Math.round(S*1.6);
+    var x=cv.getContext('2d',{willReadFrequently:true});
+    x.font='normal 500 '+S+'px Archivo, sans-serif';x.textBaseline='alphabetic';x.fillStyle='#000';
+    x.fillText('c',Math.round(S*0.2),Math.round(S*1.2));
+    var W=cv.width,H=cv.height,d=x.getImageData(0,0,W,H).data;
+    var A=function(px,py){return d[(py*W+px)*4+3]};
+    var minX=W,maxX=-1,minY=H,maxY=-1,px,py;
+    for(py=0;py<H;py++)for(px=0;px<W;px++)
+      if(A(px,py)>128){if(px<minX)minX=px;if(px>maxX)maxX=px;if(py<minY)minY=py;if(py>maxY)maxY=py}
+    if(maxX<0)return null;
+    var cyM=Math.round((minY+maxY)/2),run=0,thick=0;
+    for(px=minX;px<=maxX;px++){if(A(px,cyM)>128)run++;else if(run){thick=run;break}}
+    if(run&&!thick)thick=run;
+    var cxM=Math.round((minX+maxX)/2);run=0;var thin=0;
+    for(py=minY;py<=maxY;py++){if(A(cxM,py)>128)run++;else if(run){thin=run;break}}
+    if(run&&!thin)thin=run;
+    ST={thick:thick/S,thin:thin/S};
+  }catch(e){ST=null}
+  return ST;
+}
+function buildWm(el){
+  var cs=getComputedStyle(el),fs=parseFloat(cs.fontSize),st=strokeOf(); if(!st)return;
+  var sw=fs*(st.thin+(st.thick-st.thin)*SW);
+  var ctx=document.createElement('canvas').getContext('2d');
+  ctx.font='normal 500 '+fs+'px Archivo, sans-serif';
+  var mc=ctx.measureText('c');
+  var asc=mc.actualBoundingBoxAscent,desc=mc.actualBoundingBoxDescent,inkH=asc+desc;
+  if(!inkH)return;
+  var r=inkH/2,rad=r-sw/2,coreR=CK*(rad-sw/2),g=AP*Math.PI/360;
+  var n=function(v){return Math.round(v*1000)/1000};
+  var svg='<svg width="'+n(2*r)+'" height="'+n(inkH)+'" viewBox="0 0 '+n(2*r)+' '+n(inkH)+
+    '" style="vertical-align:'+n(-desc)+'px" aria-hidden="true"><path d="M'+n(r+rad*Math.cos(g))+' '+
+    n(r+rad*Math.sin(g))+' A'+n(rad)+' '+n(rad)+' 0 1 1 '+n(r+rad*Math.cos(-g))+' '+n(r+rad*Math.sin(-g))+
+    '" fill="none" stroke="'+cs.color+'" stroke-width="'+n(sw)+'"/><circle cx="'+n(r)+'" cy="'+n(r)+'" r="'+
+    n(coreR)+'" fill="'+GREEN+'"/></svg>';
+  el.innerHTML=LETTERS.map(function(ch,i){
+    return '<span style="margin-right:'+n(i<5?GAPS[i]/1000*fs:0)+'px">'+(ch==='c'?svg:ch)+'</span>';
+  }).join('');
+  el._fs=fs; el._ctx=ctx; el._r=r;
+}
+function measureWm(el){
+  if(!el._ctx)return null;
+  var spans=el.querySelectorAll('span'),ctx=el._ctx,fs=el._fs,edges=[],out=[];
+  Array.prototype.forEach.call(spans,function(s,i){
+    var rect=s.getBoundingClientRect(),ch=LETTERS[i];
+    if(ch==='c')edges.push([rect.left,rect.left+2*el._r]);
+    else{var m=ctx.measureText(ch);edges.push([rect.left-m.actualBoundingBoxLeft,rect.left+m.actualBoundingBoxRight])}
+  });
+  for(var i=0;i<edges.length-1;i++)out.push((edges[i+1][0]-edges[i][1])/fs*1000);
+  return out;
+}
+function solveGaps(){
+  var p=document.createElement('span');
+  p.className='wm';
+  p.style.cssText='font-size:200px;position:absolute;left:-9999px;top:0;font-family:Archivo,sans-serif;color:#000';
+  document.body.appendChild(p); buildWm(p);
+  for(var i=0;i<3;i++){
+    var m=measureWm(p); if(!m)break;
+    var t=m.reduce(function(a,b){return a+b},0)/m.length;
+    for(var j=0;j<5;j++)GAPS[j]+=(t-m[j]);
+    buildWm(p);
+  }
+  var bias=[-6,-14,-12,6,-8];
+  for(var k=0;k<5;k++)GAPS[k]=Math.round(GAPS[k]+bias[k]);
+  document.body.removeChild(p);
+}
+function ghost(){
+  var host=document.getElementById('ghost'); if(!host) return;
+  var st=strokeOf(); if(!st) return;
+  var sw=100*(st.thin+(st.thick-st.thin)*SW)/0.54;
+  var rad=34,Ro=rad+sw/2,Ri=rad-sw/2,cx=52,cy=50,g=AP*Math.PI/360;
+  var n=function(v){return Math.round(v*100)/100};
+  var d='M'+n(cx+Ro*Math.cos(g))+' '+n(cy+Ro*Math.sin(g))+'A'+n(Ro)+' '+n(Ro)+' 0 1 1 '+
+        n(cx+Ro*Math.cos(-g))+' '+n(cy+Ro*Math.sin(-g))+'L'+n(cx+Ri*Math.cos(-g))+' '+n(cy+Ri*Math.sin(-g))+
+        'A'+n(Ri)+' '+n(Ri)+' 0 1 0 '+n(cx+Ri*Math.cos(g))+' '+n(cy+Ri*Math.sin(g))+'Z';
+  host.innerHTML='<svg viewBox="0 0 100 100" style="width:100%;height:auto;display:block">'+
+    '<path fill="#F7F6F2" d="'+d+'"/><circle fill="#F7F6F2" cx="'+cx+'" cy="'+cy+'" r="'+n(CK*(rad-sw/2))+'"/></svg>';
+}
+
+/* consent — identical rules to the main site */
+var CK_KEY='lacuna-consent';
+function gpc(){ return navigator.globalPrivacyControl===true || navigator.doNotTrack==='1' }
+function get(){ try{return localStorage.getItem(CK_KEY)}catch(e){return null} }
+function set(v){ try{localStorage.setItem(CK_KEY,v)}catch(e){} }
+function loadGA(){
+  if(!CONFIG.GA4_ID||CONFIG.GA4_ID.indexOf('XXXX')>-1) return;
+  if(window.__ga) return; window.__ga=true;
+  var s=document.createElement('script');
+  s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+CONFIG.GA4_ID;
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=function(){dataLayer.push(arguments)};
+  gtag('js',new Date()); gtag('config',CONFIG.GA4_ID,{anonymize_ip:true});
+}
+function wireConsent(){
+  var bar=document.getElementById('cookieBar'), c=get();
+  if(gpc()&&!c){ set('reject'); c='reject' }
+  if(c==='accept') loadGA();
+  else if(!c) setTimeout(function(){bar.classList.add('show')},900);
+  document.getElementById('ckAccept').onclick=function(){ set('accept');bar.classList.remove('show');loadGA() };
+  document.getElementById('ckReject').onclick=function(){ set('reject');bar.classList.remove('show') };
+  document.getElementById('reopen').onclick=function(){ bar.classList.add('show') };
+}
+
+function boot(){
+  try{ solveGaps() }catch(e){}
+  document.querySelectorAll('[data-wm]').forEach(buildWm);
+  ghost(); wireConsent();
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+}
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){setTimeout(boot,40)});
+else window.addEventListener('load',boot);
+})();
+</script>
+
+</body>
+</html>

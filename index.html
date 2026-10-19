@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lacuna — Managed IT with service credits as standard</title>
+<meta name="description" content="Managed IT support with published response times and service credits applied automatically when we miss them. Hot-spare devices on site, unlimited support, and if we fail for three months running you can leave on notice and we move you to your new provider free of charge.">
+<link rel="canonical" href="https://wearelacuna.com/">
+<meta name="theme-color" content="#15171A">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wearelacuna.com/">
+<meta property="og:title" content="Lacuna — Managed IT with service credits as standard">
+<meta property="og:description" content="Published response times, service credits applied automatically, hot-spare devices on your site. Managed IT with a consequence attached.">
+<meta property="og:image" content="https://wearelacuna.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lacuna — Managed IT with service credits as standard">
+<meta name="twitter:description" content="Published response times, service credits applied automatically, hot-spare devices on your site.">
+<meta name="twitter:image" content="https://wearelacuna.com/assets/og-image.png">
+
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.pexels.com" crossorigin>
+<link rel="preconnect" href="https://videos.pexels.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="preload" as="image" href="https://images.pexels.com/videos/7983980/pexels-photo-7983980.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" fetchpriority="high">
+
+<style>
+/* ============================================================
+   LACUNA — brand tokens. Do not introduce values outside these.
+   ============================================================ */
+:root{
+  --ink:#15171A; --slate:#3E4246; --graphite:#6E7276; --ash:#9B9A96;
+  --silver:#C9C7C1; --line:#E2E0DA; --mist:#EFEDE8; --paper:#F7F6F2;
+  --green:#1D865A; --green-700:#166444; --green-300:#53C696;
+  --green-100:#D3EEE3; --green-50:#EDF7F3;
+  --amber:#9A6B12; --red:#9F1239;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px;
+  --s6:32px; --s7:48px; --s8:64px; --s9:96px; --s10:128px;
+  --wrap:1430px; --gut:40px;
+  /* How much of the column body text is allowed to fill. One value, so the
+     standfirsts, the accordion bodies and the loose paragraphs stay in step. */
+  --measure:90%;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+body{font-family:'Archivo',system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--green);color:#fff;padding:12px 20px;z-index:200}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.ink :focus-visible{outline-color:var(--green-300)}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.03em;line-height:1.1}
+h1{font-size:clamp(2.6rem,6vw,3.9rem);letter-spacing:-.04em;line-height:1.03}
+h2{font-size:clamp(1.85rem,3.6vw,2.6rem);letter-spacing:-.033em}
+h3{font-size:1.4rem;letter-spacing:-.022em}
+h4{font-size:1.16rem;letter-spacing:-.018em}
+/* Measure is capped on the text, not the container. 60–75 characters is the readable
+   range; beyond about 80 the eye loses its place returning to the next line. So prose
+   is always narrower than the page — the width is spent on layout instead. */
+p{max-width:72ch}
+.eb{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);font-weight:600;
+  margin-bottom:var(--s4);display:block}
+/* The standfirst runs the full width of the page. Because line length grows with the
+   container, the type scales up with it — a bigger face fits fewer characters per line,
+   which is what keeps a full-bleed line readable rather than sprawling. */
+.lead{font-size:clamp(1.05rem,1.85vw,1.7rem);color:var(--graphite);line-height:1.5;
+  max-width:var(--measure);text-wrap:pretty}
+.sec-intro{margin-bottom:var(--s7)}
+
+/* ---------- sections ---------- */
+section{padding:var(--s9) 0}
+.band-paper{background:var(--paper)}
+.band-mist{background:var(--mist)}
+.band-ink{background:var(--ink);color:var(--paper)}
+.band-ink .lead,.band-ink p{color:rgba(247,246,242,.66)}
+.band-ink .eb{color:var(--green-300)}
+.band-ink strong{color:var(--paper)}
+.hr{height:1px;background:var(--line);border:0}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:var(--s2);font-size:.98rem;font-weight:500;
+  padding:15px 28px;border-radius:4px;border:1px solid transparent;text-decoration:none;cursor:pointer;
+  font-family:inherit;transition:background .18s,color .18s,border-color .18s;line-height:1.2}
+.btn-pri{background:var(--green);color:#fff}
+.btn-pri:hover{background:var(--green-700)}
+.btn-sec{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-sec:hover{background:var(--ink);color:var(--paper)}
+.band-ink .btn-sec{color:var(--paper);border-color:rgba(247,246,242,.42)}
+.band-ink .btn-sec:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.btn-link{color:var(--green);border-bottom:1px solid var(--green);padding:0 0 2px;border-radius:0;
+  text-decoration:none;font-weight:500}
+.btns{display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center}
+
+/* ---------- wordmark ---------- */
+.wm{line-height:1;white-space:nowrap;display:inline-block;font-weight:500;letter-spacing:-.035em;
+  font-kerning:none;font-variant-ligatures:none;font-feature-settings:"kern" 0,"liga" 0;text-decoration:none}
+.wm svg{display:inline-block}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.93);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+header .inner{display:flex;align-items:center;justify-content:space-between;gap:var(--s5);padding:var(--s4) 0}
+nav.main{display:flex;align-items:center;gap:var(--s5)}
+nav.main a{font-size:.92rem;color:var(--graphite);text-decoration:none;font-weight:500}
+nav.main a:hover{color:var(--ink)}
+/* NOTE: `nav.main a` outranks `.btn-pri` on specificity, so the button colour has to be
+   restated here or the label inherits graphite and all but disappears on the green. */
+nav.main a.btn-pri,nav.main a.btn-pri:hover{color:#fff}
+nav.main a.btn-pri{font-size:.94rem;font-weight:500;padding:13px 24px}
+.navtoggle{display:none;background:none;border:1px solid var(--line);border-radius:4px;padding:9px 11px;cursor:pointer}
+.navtoggle span{display:block;width:19px;height:1.5px;background:var(--ink);margin:4px 0}
+@media(max-width:940px){
+  nav.main{position:fixed;inset:65px 0 auto;background:var(--paper);flex-direction:column;
+    align-items:stretch;gap:0;padding:var(--s3) var(--gut) var(--s6);border-bottom:1px solid var(--line);
+    transform:translateY(-120%);transition:transform .28s ease;max-height:calc(100vh - 65px);overflow:auto}
+  nav.main.open{transform:translateY(0)}
+  nav.main a{padding:15px 0;border-bottom:1px solid var(--line);font-size:1.05rem;color:var(--ink)}
+  nav.main a.btn-pri{color:#fff;border-bottom:0;padding:16px 24px;font-size:1rem}
+  nav.main .btn{margin-top:var(--s4);justify-content:center}
+  .navtoggle{display:block}
+}
+
+/* ---------- hero ---------- */
+.hero{background:var(--ink);color:var(--paper);position:relative;overflow:hidden;
+  min-height:min(90vh,860px);display:flex;align-items:center;padding:var(--s9) 0 var(--s7)}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hslide{position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;transition:opacity 1.1s ease;will-change:opacity,transform}
+.hslide.on{opacity:1}
+/* Slow drift on the stills so they read as footage rather than wallpaper.
+   Video slides are left alone — they already move, and doubling it looks seasick.
+   Starting at 1.02 keeps the edges covered while the transform settles. */
+@keyframes kb-in {from{transform:scale(1.02)} to{transform:scale(1.12)}}
+@keyframes kb-out{from{transform:scale(1.12)} to{transform:scale(1.02)}}
+.hslide:not([data-video]){transform:scale(1.02);transform-origin:52% 48%}
+.hslide:not([data-video]).on{animation:kb-in 9.5s ease-out forwards}
+.hslide:nth-child(4):not([data-video]).on{animation-name:kb-out}
+@media(prefers-reduced-motion:reduce){
+  .hslide.on{animation:none !important;transform:none !important}
+}
+.hslide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .9s ease}
+.hslide video.ready{opacity:1}
+.hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(100deg,rgba(21,23,26,.95) 0%,rgba(21,23,26,.88) 38%,rgba(21,23,26,.58) 78%,rgba(21,23,26,.5) 100%)}
+.hero .ghost{position:absolute;right:-9%;bottom:-34%;width:58vw;max-width:740px;opacity:.06;pointer-events:none;z-index:2}
+.hero .wrap{position:relative;z-index:3;width:100%}
+.hstack{display:grid}
+.hcopy{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(12px);
+  transition:opacity .7s ease,transform .7s ease,visibility 0s linear .7s}
+.hcopy.on{opacity:1;visibility:visible;transform:none;transition:opacity .7s ease .12s,transform .7s ease .12s,visibility 0s}
+.hero h1{max-width:19ch}
+.hero .lead{margin-top:var(--s5);color:rgba(247,246,242,.72);max-width:56ch;
+  font-size:clamp(1.05rem,1.5vw,1.24rem);line-height:1.6}
+.hero .btns{margin-top:var(--s7)}
+.hero .note{margin-top:var(--s4);font-size:.86rem;color:rgba(247,246,242,.45)}
+.hero-ctl{display:flex;align-items:center;gap:var(--s4);margin-top:var(--s7)}
+.dots{display:flex;gap:var(--s2)}
+.dot{width:38px;height:3px;padding:0;border:0;background:rgba(247,246,242,.26);cursor:pointer;
+  transition:background .3s}
+.dot.on{background:var(--green-300)}
+.dot:hover{background:rgba(247,246,242,.55)}
+.playbtn{width:30px;height:30px;padding:0;border:1px solid rgba(247,246,242,.28);background:transparent;
+  border-radius:4px;cursor:pointer;display:grid;place-items:center}
+.playbtn:hover{border-color:rgba(247,246,242,.7)}
+.playbtn svg{width:11px;height:11px;fill:rgba(247,246,242,.8)}
+@media(prefers-reduced-motion:reduce){.hslide video{display:none}}
+@media(max-width:780px){
+  .hero{min-height:0;padding:var(--s8) 0 var(--s7)}
+  .hero-scrim{background:linear-gradient(180deg,rgba(21,23,26,.9) 0%,rgba(21,23,26,.86) 60%,rgba(21,23,26,.94) 100%)}
+}
+
+/* ---------- statement band ---------- */
+.statement{position:relative;overflow:hidden;background:var(--ink);color:var(--paper);
+  padding:var(--s9) 0;min-height:420px;display:flex;align-items:center}
+.statement .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.statement .bg::after{content:'';position:absolute;inset:0;background:#15171A;opacity:.62}
+.statement .wrap{position:relative;z-index:2;width:100%}
+.statement .eb{color:var(--green-300)}
+.statement p.big{font-size:clamp(1.55rem,3.6vw,2.5rem);font-weight:500;letter-spacing:-.032em;
+  line-height:1.24;max-width:24ch;color:var(--paper)}
+.statement p.sub{margin-top:var(--s5);color:rgba(247,246,242,.62);max-width:56ch;font-size:1.05rem}
+
+/* ---------- card imagery ---------- */
+.card-img{aspect-ratio:16/10;overflow:hidden;background:var(--mist);
+  margin:calc(var(--s6) * -1) calc(var(--s6) * -1) var(--s5);border-bottom:1px solid var(--line)}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
+.card:hover .card-img img{transform:scale(1.045)}
+@media(prefers-reduced-motion:reduce){.card:hover .card-img img{transform:none}}
+.trust{border-top:1px solid rgba(247,246,242,.14);margin-top:var(--s9);padding-top:var(--s5);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5)}
+.trust div{font-size:1.2rem;color:rgba(247,246,242,.78);padding-left:31px;position:relative;line-height:1.45}
+/* Ticks rather than dots: these are three things you get, not three items in a list.
+   Revert to `width:10px;height:10px;border-radius:50%;background:var(--green-300)`
+   with no transform for the original dots. */
+.trust div::before{content:'';position:absolute;left:2px;top:6px;width:8px;height:14px;
+  border-right:2.5px solid var(--green-300);border-bottom:2.5px solid var(--green-300);transform:rotate(45deg)}
+@media(max-width:780px){.trust{grid-template-columns:1fr;gap:var(--s3)}}
+
+/* ---------- stats ---------- */
+.stats{padding:var(--s7) 0}
+/* Paper and Mist are only four points of lightness apart, so alternating them alone
+   barely reads as a break. A hairline defines the boundary wherever two light
+   sections meet; where a section changes to or from ink, the tone does the work. */
+.band-paper + .band-paper, .band-paper + .band-mist,
+.band-mist + .band-paper,  .band-mist + .band-mist{border-top:1px solid var(--line)}
+.stats .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s7)}
+.stats b{display:block;font-size:clamp(2.2rem,4.4vw,3.1rem);font-weight:600;letter-spacing:-.04em;
+  line-height:1;color:var(--green);font-variant-numeric:tabular-nums}
+.stats span{display:block;margin-top:var(--s3);font-size:.93rem;color:var(--graphite);max-width:30ch}
+@media(max-width:780px){.stats .grid{grid-template-columns:1fr;gap:var(--s5)}}
+
+/* ---------- generic grids ---------- */
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s6)}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.g4p{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s5)}
+@media(max-width:1180px){.g4p{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:940px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.g2,.g3,.g4p{grid-template-columns:1fr}}
+
+/* ---------- cards ---------- */
+.card{border:1px solid var(--line);padding:var(--s6);background:var(--paper)}
+.band-mist .card{background:#fff}
+.band-ink .card{background:transparent;border-color:#2A2E33}
+.card.accent{border-left:4px solid var(--green)}
+.card h3,.card h4{margin-bottom:var(--s3)}
+.card p{font-size:.97rem;color:var(--graphite);max-width:none}
+.band-ink .card p{color:rgba(247,246,242,.6)}
+.card .ico{width:40px;height:40px;margin-bottom:var(--s4);color:var(--ink)}
+.card .ico svg{width:100%;height:100%}
+
+/* ---------- commitment tiles ---------- */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+@media(max-width:940px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.tiles{grid-template-columns:1fr}}
+.tile{border:1px solid #2A2E33;border-left:4px solid var(--green);padding:var(--s6) var(--s5)}
+.tile h4{margin-bottom:var(--s3)}
+.tile p{font-size:.95rem;color:rgba(247,246,242,.6);max-width:none}
+
+/* ---------- terms table ---------- */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);background:#fff}
+/* tabular figures so the month columns align down the table */
+table{width:100%;border-collapse:collapse;font-size:1rem;min-width:600px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);
+  font-weight:600;padding:var(--s5) var(--s5) var(--s3);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:var(--s5);border-bottom:1px solid var(--line);color:var(--slate);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td:first-child{font-weight:500;color:var(--ink);white-space:nowrap}
+.yes{color:var(--green);font-weight:500}
+
+/* ---------- why / the belief ---------- */
+.whybody{max-width:var(--measure);margin-bottom:var(--s7)}
+.whybody p{font-size:1.08rem;line-height:1.72;color:var(--slate);max-width:none}
+.whybody p + p{margin-top:var(--s4)}
+.whyline{max-width:30ch;font-size:clamp(1.5rem,2.8vw,2.15rem);font-weight:600;letter-spacing:-.03em;
+  line-height:1.2;color:var(--ink);border-left:4px solid var(--green);padding-left:var(--s6);margin:0}
+
+/* ---------- solutions ---------- */
+/* White, to match the pricing panel above them. Cards default to the paper tone, which
+   on a paper section leaves them showing only their border while the panel sits white. */
+.sol .card{display:grid;align-content:start;background:#fff}
+
+/* Solutions sits on ink. Its components invert rather than staying light — six white
+   blocks on a dark ground would read as holes punched in the page. */
+.band-ink .sol .card{background:transparent;border-color:#2A2E33}
+.band-ink .card .ico{color:var(--paper)}
+.band-ink .sol .after{border-top-color:#2A2E33;color:rgba(247,246,242,.6)}
+.band-ink .sol .after b{color:var(--green-300)}
+.band-ink .incl-foot{background:transparent;border-color:#2A2E33}
+.band-ink .incl-foot h4{color:var(--green-300)}
+.band-ink .incl-foot .row div{color:rgba(247,246,242,.6)}
+.band-ink .incl-foot .row div b{color:var(--paper)}
+.band-ink .incl-foot .row div::before{border-color:var(--green-300)}
+.sol .after{margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid var(--line);
+  font-size:.88rem;color:var(--graphite);line-height:1.5}
+.sol .after b{display:block;color:var(--green);font-weight:600;font-size:.64rem;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
+
+/* ---------- what's included ---------- */
+.incl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+@media(max-width:940px){.incl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.incl{grid-template-columns:1fr}}
+.incl .card{padding:var(--s6) var(--s5)}
+.incl h4{margin-bottom:var(--s5);padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
+.incl ul{list-style:none;display:grid;gap:var(--s4)}
+.incl li{padding-left:27px;position:relative;font-size:.95rem;line-height:1.55;color:var(--graphite)}
+.incl li b{color:var(--ink);font-weight:600}
+.incl li::before{content:'';position:absolute;left:3px;top:4px;width:6px;height:11px;
+  border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(45deg)}
+/* Plain Line border. These are information panels, not the one green callout. */
+.incl-foot{border:1px solid var(--line);background:#fff;
+  padding:var(--s6) var(--s6) var(--s5);margin-top:var(--s4)}
+.incl-foot h4{margin-bottom:var(--s5)}
+.incl-foot .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6)}
+@media(max-width:780px){.incl-foot .row{grid-template-columns:1fr;gap:var(--s4)}}
+.incl-foot .row div{font-size:.95rem;line-height:1.55;color:var(--graphite);padding-left:27px;position:relative}
+.incl-foot .row div b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+.incl-foot .row div::before{content:'';position:absolute;left:3px;top:4px;width:6px;height:11px;
+  border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(45deg)}
+
+/* ---------- price ---------- */
+.price{display:flex;align-items:baseline;gap:var(--s4);flex-wrap:wrap;margin-bottom:var(--s5)}
+.price b{font-size:clamp(3rem,7vw,4.6rem);font-weight:600;letter-spacing:-.045em;line-height:1;color:var(--green)}
+.price span{font-size:1.15rem;color:var(--graphite)}
+
+/* ---------- accordion ---------- */
+.acc{border-top:1px solid var(--line)}
+.band-ink .acc{border-top-color:#2A2E33}
+details{border-bottom:1px solid var(--line)}
+.band-ink details{border-bottom-color:#2A2E33}
+summary{list-style:none;cursor:pointer;padding:var(--s5) 46px var(--s5) 0;position:relative;
+  font-size:1.2rem;font-weight:500;letter-spacing:-.018em;display:block}
+summary::-webkit-details-marker{display:none}
+summary:hover{color:var(--green)}
+summary .num{color:var(--green);font-weight:600;margin-right:var(--s4);font-size:.82rem;
+  letter-spacing:.1em;vertical-align:middle}
+/* The stage descriptor. It was set in Ash, which is 2.6:1 on paper — the reason it
+   read as unreadable was contrast rather than size. Graphite is 4.9:1 and passes AA.
+   Hierarchy now comes from weight and colour, so it can sit at full size. */
+summary .sub-t{font-size:1em;font-weight:400;color:var(--graphite);letter-spacing:-.01em}
+summary:hover .sub-t{color:var(--graphite)}
+@media(max-width:620px){
+  summary{font-size:1.1rem}
+  summary .sub-t{display:block;margin-top:6px;font-size:.95em}
+}
+summary::after{content:'';position:absolute;right:8px;top:50%;width:13px;height:13px;
+  border-right:1.5px solid var(--graphite);border-bottom:1.5px solid var(--graphite);
+  transform:translateY(-70%) rotate(45deg);transition:transform .3s ease}
+details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+/* flip the arrow the instant a close begins, rather than when the animation ends */
+details.closing summary::after{transform:translateY(-70%) rotate(45deg)}
+/* in an exclusive group the open item cannot be clicked shut, so it should not invite it */
+.acc[data-single] details[open] > summary{cursor:default}
+.acc[data-single] details[open] > summary:hover{color:var(--ink)}
+.acc[data-single] details[open] > summary .num{color:var(--green)}
+.acc-body{overflow:hidden;padding-bottom:var(--s5)}
+.acc-body p{color:var(--graphite);max-width:var(--measure);font-size:1.05rem}
+.acc-body p + p{margin-top:var(--s3)}
+.acc-body ul{list-style:none;margin-top:var(--s5);display:grid;gap:var(--s2)}
+.acc-body li{color:var(--graphite);padding-left:22px;position:relative;font-size:1.05rem}
+.acc-body li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--green)}
+.band-ink .acc-body p,.band-ink .acc-body li{color:rgba(247,246,242,.62)}
+
+
+/* ---------- fit lists ---------- */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7)}
+@media(max-width:680px){.fit{grid-template-columns:1fr;gap:var(--s6)}}
+.fit h4{margin-bottom:var(--s4);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+.fit .y h4{color:var(--green)}
+.fit .n h4{color:var(--graphite)}
+.fit ul{list-style:none;display:grid;gap:var(--s3)}
+.fit li{padding-left:26px;position:relative;color:var(--slate)}
+.fit .y li::before{content:'';position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--green)}
+.fit .n li::before{content:'';position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--silver)}
+/* Who we work with sits on ink */
+.band-ink .fit .y h4{color:var(--green-300)}
+/* Paper, not #FFFFFF — Surface is a fill for cards and panels, Paper is the reversed
+   text value, and they are four points of lightness apart. Both columns now carry equal
+   weight and are told apart by hue rather than by brightness, which is right: the list
+   of who we are wrong for is the half that earns trust, so muting it works against it. */
+.band-ink .fit .n h4{color:var(--paper)}
+.band-ink .fit li{color:rgba(247,246,242,.72)}
+.band-ink .fit .y li::before{background:var(--green-300)}
+.band-ink .fit .n li::before{background:var(--paper)}
+
+/* ---------- form ---------- */
+.form{display:grid;gap:var(--s5)}
+.frow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
+@media(max-width:680px){.frow{grid-template-columns:1fr}}
+.field{display:grid;gap:var(--s2);min-width:0}
+.field label{font-size:.76rem;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+  color:rgba(247,246,242,.55)}
+.field label .opt{color:rgba(247,246,242,.3);letter-spacing:0;text-transform:none;font-weight:400;font-size:.8rem}
+.field input,.field select,.field textarea{width:100%;min-width:0;font-family:inherit;font-size:1rem;
+  padding:14px 15px;background:rgba(247,246,242,.05);border:1px solid rgba(247,246,242,.2);
+  border-radius:4px;color:var(--paper)}
+.field select{appearance:none;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%239B9A96' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;background-size:12px;padding-right:40px}
+.field select option{background:var(--ink);color:var(--paper)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(247,246,242,.28)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green-300);outline:none;
+  background:rgba(247,246,242,.08)}
+.field textarea{resize:vertical;min-height:110px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-foot{display:flex;gap:var(--s5);align-items:center;flex-wrap:wrap;margin-top:var(--s2)}
+.form-foot small{font-size:.84rem;color:rgba(247,246,242,.42);max-width:42ch;line-height:1.5}
+.form-foot small a{color:var(--green-300)}
+#formMsg{display:none;border:1px solid #2A2E33;border-left:4px solid var(--green);padding:var(--s6);background:rgba(247,246,242,.04)}
+#formMsg.show{display:block}
+#formMsg h3{margin-bottom:var(--s3)}
+#formMsg p{color:rgba(247,246,242,.66);font-size:1.02rem}
+#formMsg.soft{border-left-color:var(--amber)}
+#formMsg.err{border-left-color:var(--red)}
+
+/* ---------- booking ---------- */
+#cal-embed{min-height:640px;background:transparent;border:0}
+#cal-embed iframe{background:transparent !important;border:0}
+.cal-fallback{padding:var(--s7);text-align:center;color:var(--graphite)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:var(--paper);padding:var(--s9) 0 var(--s7)}
+.f-top{display:grid;grid-template-columns:1.55fr 1fr .8fr 1fr 1.05fr;gap:var(--s6);padding-bottom:var(--s7);
+  border-bottom:1px solid rgba(247,246,242,.14)}
+@media(max-width:1180px){.f-top{grid-template-columns:1.4fr 1fr 1fr;row-gap:var(--s7)}}
+@media(max-width:880px){.f-top{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.f-top{grid-template-columns:1fr}}
+.f-top h5{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(247,246,242,.34);
+  font-weight:600;margin-bottom:var(--s4)}
+.f-top ul{list-style:none;display:grid;gap:var(--s3)}
+.f-top a{color:rgba(247,246,242,.66);text-decoration:none;font-size:.95rem}
+.f-top a:hover{color:var(--paper)}
+.f-top p{font-size:.95rem;color:rgba(247,246,242,.6);max-width:34ch}
+.f-bot{padding-top:var(--s5);display:flex;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;
+  font-size:.83rem;color:rgba(247,246,242,.38);line-height:1.6}
+.f-bot a{color:rgba(247,246,242,.55)}
+.f-legal{max-width:62ch}
+
+/* ---------- cookie banner ---------- */
+/* No shadow and no green edge: a consent notice is system messaging, not a brand
+   callout, and the ink ground against a light page is separation enough. */
+.cookie{position:fixed;left:var(--s5);right:var(--s5);bottom:var(--s5);z-index:150;background:var(--ink);
+  color:var(--paper);border:1px solid #2A2E33;padding:var(--s5) var(--s6);
+  display:none;gap:var(--s5);align-items:center;justify-content:space-between;flex-wrap:wrap;
+  max-width:760px;margin:0 auto}
+.cookie.show{display:flex}
+.cookie p{font-size:.92rem;color:rgba(247,246,242,.68);max-width:46ch;line-height:1.55}
+.cookie p a{color:var(--green-300)}
+.cookie .acts{display:flex;gap:var(--s3);flex-wrap:wrap}
+.cookie .btn{padding:11px 20px;font-size:.88rem}
+/* The banner is ink but is not a .band-ink section, so it never picked up the
+   reversed secondary button — Reject was rendering ink-on-ink and vanished. */
+.cookie .btn-sec{color:var(--paper);border-color:rgba(247,246,242,.45);background:transparent}
+.cookie .btn-sec:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============================ HEADER ============================ -->
+<header>
+  <div class="wrap inner">
+    <a class="wm" href="#" style="font-size:25px" data-wm aria-label="Lacuna, home">Lacuna</a>
+    <nav class="main" id="nav" aria-label="Main">
+      <a href="#why">Why Lacuna</a>
+      <a href="#problem">The problem</a>
+      <a href="#commitment">Our commitment</a>
+      <a href="#services">Services</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#approach">Our approach</a>
+      <a href="#contact">Get in touch</a>
+      <a class="btn btn-pri" href="#book">Book a consultation</a>
+    </nav>
+    <button class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero band-ink" id="hero" aria-roledescription="carousel" aria-label="Introduction">
+  <!-- MEDIA: every hero asset is listed in README.md under "Media manifest".
+       Slides 1 and 3 carry video; 2 and 4 are stills. A failed video leaves the
+       still in place, so nothing breaks if a URL goes away. -->
+  <div class="hero-media" aria-hidden="true">
+    <div class="hslide on" data-video="https://videos.pexels.com/video-files/7983980/7983980-hd_1920_1080_25fps.mp4"
+         style="background-image:url(https://images.pexels.com/videos/7983980/pexels-photo-7983980.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920)"></div>
+    <!-- still only. source clip is portrait, so the crop is forced to 16:9 server-side -->
+    <div class="hslide"
+         style="background-image:url(https://images.pexels.com/videos/8141342/adult-boss-boss-lady-business-8141342.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=1920&amp;h=1080)"></div>
+    <div class="hslide" data-video="https://videos.pexels.com/video-files/8643568/8643568-uhd_2560_1440_24fps.mp4"
+         style="background-image:url(https://images.pexels.com/videos/8643568/adult-business-businessman-businesswoman-8643568.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920)"></div>
+    <div class="hslide"
+         style="background-image:url(https://images.pexels.com/videos/5636983/pexels-photo-5636983.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920)"></div>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="hstack">
+      <div class="hcopy on" role="group" aria-label="1 of 4">
+        <span class="eb">Managed IT services</span>
+        <h1>Managed IT with a consequence attached</h1>
+        <p class="lead">Every IT company promises great service. We publish our response times in the agreement — and if we miss one, service credits are applied automatically. You never have to ask.</p>
+        <div class="btns">
+          <a class="btn btn-pri" href="#book">Book a consultation</a>
+          <a class="btn btn-sec" href="#commitment">See what we commit to</a>
+        </div>
+        <p class="note">Free, no obligation, around 30 minutes.</p>
+      </div>
+
+      <div class="hcopy" role="group" aria-label="2 of 4">
+        <span class="eb">Switching provider</span>
+        <h1>The risky part is the handover. We take that risk</h1>
+        <p class="lead">We run in parallel with your current provider for thirty days, and nothing is switched off until we have proven it working on our side.</p>
+        <div class="btns">
+          <a class="btn btn-pri" href="#approach">How we start</a>
+          <a class="btn btn-sec" href="#faq">Common questions</a>
+        </div>
+        <p class="note">Around ninety days end to end.</p>
+      </div>
+
+      <div class="hcopy" role="group" aria-label="3 of 4">
+        <span class="eb">Our commitment</span>
+        <h1>Spare devices in your building, not our warehouse</h1>
+        <p class="lead">A failed laptop should be a ten minute problem, not a three day one spent waiting on a courier, a supplier and a purchase order.</p>
+        <div class="btns">
+          <a class="btn btn-pri" href="#commitment">What we put in writing</a>
+          <a class="btn btn-sec" href="#book">Book a consultation</a>
+        </div>
+        <p class="note">Standard on every managed service agreement.</p>
+      </div>
+
+      <div class="hcopy" role="group" aria-label="4 of 4">
+        <span class="eb">Commercials</span>
+        <h1>A price on the page, and a way out if we fail</h1>
+        <p class="lead">Around $250 per user per month, fixed after the assessment. Miss your service levels three months running and you can leave on three months' notice — and we move you to your new provider for nothing.</p>
+        <div class="btns">
+          <a class="btn btn-pri" href="#pricing">See pricing and terms</a>
+          <a class="btn btn-sec" href="#contact">Send us your details</a>
+        </div>
+        <p class="note">Two months free on 12, six on three years, twelve on five.</p>
+      </div>
+    </div>
+
+    <div class="hero-ctl">
+      <div class="dots" role="tablist" aria-label="Choose slide">
+        <button class="dot on" type="button" aria-label="Slide 1"></button>
+        <button class="dot" type="button" aria-label="Slide 2"></button>
+        <button class="dot" type="button" aria-label="Slide 3"></button>
+        <button class="dot" type="button" aria-label="Slide 4"></button>
+      </div>
+      <button class="playbtn" id="heroPause" type="button" aria-label="Pause slideshow">
+        <svg viewBox="0 0 10 10" aria-hidden="true"><rect x="1" y="0" width="3" height="10"/><rect x="6" y="0" width="3" height="10"/></svg>
+      </button>
+    </div>
+
+    <div class="trust">
+      <div>Response times written into the agreement, not a brochure</div>
+      <div>Hot-spare devices kept on your site, not in our warehouse</div>
+      <div>Three months of missed service levels and you can leave on three months' notice</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STATS ============================ -->
+<div class="stats band-paper">
+  <div class="wrap grid">
+    <div><b>99.98%</b><span>Uptime across managed infrastructure, reported monthly</span></div>
+    <div><b>15 min</b><span>Target first response on a P1 — a named engineer, not an auto-reply</span></div>
+    <div><b>20+ yrs</b><span>In managed services, across regulated and non-regulated sectors</span></div>
+  </div>
+</div>
+
+<!-- ============================ WHY LACUNA ============================ -->
+<section id="why" class="band-paper">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Why Lacuna</span>
+      <h2>Every business deserves what the enterprise takes for granted</h2>
+      <p class="lead">Twenty years inside this industry taught us that the gap between what a global enterprise receives and what a fifty-person business receives has very little to do with technology. Both run the same operating systems, the same cloud platforms, the same security tools. The difference is what the provider is willing to commit to.</p>
+    </div>
+
+    <div class="whybody">
+      <p>Large organisations have the leverage to insist on published response times, tested recovery, real reporting and a penalty when it slips. Everybody else is handed a brochure and told to be grateful for it. That is not a technology problem, it is an expectations problem — and it has been allowed to stand for a very long time.</p>
+      <p><strong>Read your current agreement.</strong> There is a response time in it, and almost certainly nothing that happens if it is missed. That gap — between what was promised and what anyone is actually accountable for — is where poor service lives, and closing it is the reason we exist.</p>
+      <p>We built Lacuna to do exactly that. To bring businesses of any size the standard of service that, until now, only the largest ones have had the power to demand.</p>
+    </div>
+
+    <p class="whyline">Raising what you expect from a provider matters more to us than winning your contract.</p>
+  </div>
+</section>
+
+<!-- ============================ THE PROBLEM ============================ -->
+<section id="problem" class="band-mist">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">The problem</span>
+      <h2>Most IT problems are not technical</h2>
+      <p class="lead">They are accountability problems. Nobody is measuring how long anything takes, nothing happens when it slips, and eventually your staff stop reporting faults at all — so the real cost never appears on anyone's report.</p>
+    </div>
+    <div class="g4p">
+      <div class="card">
+        <h4>Your people stopped telling you</h4>
+        <p>When raising a ticket feels pointless, people work around problems instead. Ask around and you will find someone who has quietly given up — and whatever they have stopped reporting is invisible to everyone above them.</p>
+      </div>
+      <div class="card">
+        <h4>Nobody can say how long things take</h4>
+        <p>No ticketing means no record, and no record means no argument. The problems that get fixed are the ones raised by whoever is most persistent, rather than the ones costing you the most.</p>
+      </div>
+      <div class="card">
+        <h4>The invoice is never the real cost</h4>
+        <p>Forty people losing half a day is roughly $6,000 in salaried time. Six of those a year dwarfs almost any support contract — it is simply harder to see, because it never arrives as a bill.</p>
+      </div>
+      <div class="card">
+        <h4>You have become the escalation path</h4>
+        <p>When something serious breaks, the person chasing it is you. That is the clearest sign the arrangement is not working, and it is the part no provider ever puts on a report.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COMMITMENT ============================ -->
+<section id="commitment" class="band-ink">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Our commitment</span>
+      <h2>What we put in writing</h2>
+      <p class="lead">Standard on every managed service agreement. Not a premium tier, not something you negotiate for, not an upgrade.</p>
+    </div>
+    <div class="tiles">
+      <div class="tile">
+        <h4>Service credits</h4>
+        <p>Miss a published response time and credits are applied to your account automatically. No claim form, no process, nothing to prove. Being slow costs us money — that is the entire point.</p>
+      </div>
+      <div class="tile">
+        <h4>Hot-spare devices</h4>
+        <p>Replacement machines live in your building, already configured. A failed laptop becomes a ten minute problem instead of a three day one waiting on a courier and a purchase order.</p>
+      </div>
+      <div class="tile">
+        <h4>Unlimited support</h4>
+        <p>One monthly cost covering remote and onsite support. No per-incident billing, so nobody on your team hesitates before asking for help, and no surprise invoice after a difficult month.</p>
+      </div>
+      <div class="tile">
+        <h4>Published response times</h4>
+        <p>P1 through P4 defined in the agreement with a target against each. Response means a named engineer working on it, not an automated acknowledgement landing in your inbox.</p>
+      </div>
+      <div class="tile">
+        <h4>An exit if we fail</h4>
+        <p>Miss your service levels three months running and you can end the agreement on three months' notice, on any term. And if it comes to that, we move you to your new provider free of charge.</p>
+      </div>
+      <div class="tile">
+        <h4>Monthly reporting</h4>
+        <p>What happened, how fast we responded, what we fixed and what we did not. Sent whether the month was good or bad, with a quarterly review about outcomes rather than ticket counts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SERVICES ============================ -->
+<section id="services" class="band-mist">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Services</span>
+      <h2>The whole estate, one agreement</h2>
+      <p class="lead">One contract, one number to call, one monthly cost. We take responsibility for all of it rather than the parts that are convenient.</p>
+    </div>
+    <div class="g3">
+      <div class="card">
+        <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/8192185/pexels-photo-8192185.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="A support engineer taking a call at their desk"></div>
+        <div class="ico" data-ico="desk"></div>
+        <h4>Service desk</h4>
+        <p>The day to day. Named engineers who know your estate rather than a rota of strangers reading a script, with every request tracked and measured.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/16564512/pexels-photo-16564512/free-photo-of-smartphone-on-desk.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="A working desk with laptop, monitor and phone"></div>
+        <div class="ico" data-ico="euc"></div>
+        <h4>End user computing</h4>
+        <p>Laptops, desktops and mobiles from procurement through build, deployment and replacement — including the hot spares held on your site.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="An engineer configuring network cabling in a server rack"></div>
+        <div class="ico" data-ico="net"></div>
+        <h4>Networks &amp; connectivity</h4>
+        <p>Firewalls, switching, wireless and the links between your sites and the cloud. Monitored continuously rather than checked when something breaks.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/5380655/pexels-photo-5380655.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="A security analyst reviewing activity across a managed estate"></div>
+        <div class="ico" data-ico="sec"></div>
+        <h4>Cyber security</h4>
+        <p>Endpoint protection, patching, access control and multi-factor authentication as standard, with monitoring and a documented response when something is found.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="An engineer working across monitors on cloud and server configuration"></div>
+        <div class="ico" data-ico="cloud"></div>
+        <h4>Cloud &amp; infrastructure</h4>
+        <p>Servers, storage and the platforms the business actually runs on — in your building, in a data centre or in Microsoft 365. Capacity, resilience and backup included, with restores tested quarterly and the results sent to you.</p>
+      </div>
+      <div class="card">
+        <div class="card-img"><img loading="lazy" decoding="async" onerror="this.closest('.card-img').remove()" src="https://images.pexels.com/photos/9034283/pexels-photo-9034283.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=500" alt="A quarterly service review, going through the reporting with a client"></div>
+        <div class="ico" data-ico="svc"></div>
+        <h4>Service management</h4>
+        <p>Monthly reporting, a quarterly review and a forward plan for the estate. The part most providers skip, and the part that stops problems recurring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SOLUTIONS ============================ -->
+<section id="solutions" class="band-ink">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Solutions</span>
+      <h2>The projects that get you there</h2>
+      <p class="lead">The managed service keeps the estate you already have running properly. These are the pieces of work that change it — each one quoted on its own, always before anything starts.</p>
+    </div>
+
+    <div class="incl-foot" style="margin:0 0 var(--s7)">
+      <h4>How project work is priced</h4>
+      <div class="row">
+        <div><b>Fixed price, quoted up front</b>You see the number before anything begins. It does not move afterwards unless you change the scope, in writing</div>
+        <div><b>Nothing starts without your say-so</b>No work is ever begun and invoiced afterwards. If it was not agreed, it does not happen</div>
+        <div><b>Running it afterwards is included</b>Once delivered, the ongoing management sits inside your monthly fee. You pay to change the estate, never to keep it working</div>
+      </div>
+    </div>
+
+    <div class="g3 sol">
+      <div class="card">
+        <div class="ico" data-ico="m365"></div>
+        <h4>Microsoft 365 &amp; Entra ID</h4>
+        <p>Tenant design, migration from on-premises or from another provider, licence rationalisation, and conditional access with multi-factor authentication enforced properly rather than left optional.</p>
+        <div class="after"><b>Then included</b>Tenant administration, licence changes and day-to-day identity support</div>
+      </div>
+
+      <div class="card">
+        <div class="ico" data-ico="migr"></div>
+        <h4>Cloud &amp; server migration</h4>
+        <p>Moving line-of-business applications and file services off ageing hardware into Azure or a hosted platform — sized on what you actually use, rather than on whatever the last server was specified for.</p>
+        <div class="after"><b>Then included</b>Monitoring, patching, capacity planning and a quarterly cost review</div>
+      </div>
+
+      <div class="card">
+        <div class="ico" data-ico="net"></div>
+        <h4>Networks &amp; connectivity</h4>
+        <p>Firewalls, switching, wireless surveys, links between sites and failover circuits — designed so that a single line going down is an inconvenience rather than a closure.</p>
+        <div class="after"><b>Then included</b>Monitoring, firmware, and firewall rule changes on request</div>
+      </div>
+
+      <div class="card">
+        <div class="ico" data-ico="sec"></div>
+        <h4>Security &amp; compliance evidence</h4>
+        <p>Endpoint detection and response, email security, phishing simulation, and the written policies and evidence pack your insurer or auditor is going to ask for before they ask for it.</p>
+        <div class="after"><b>Then included</b>Ongoing monitoring, patching and an annual evidence refresh</div>
+      </div>
+
+      <div class="card">
+        <div class="ico" data-ico="bak"></div>
+        <h4>Backup &amp; disaster recovery</h4>
+        <p>Offsite replication, a documented recovery time you can hand to your insurer, and a restore that has actually been tested rather than one everybody assumes would work.</p>
+        <div class="after"><b>Then included</b>Quarterly tested restores with the results sent to you</div>
+      </div>
+
+      <div class="card">
+        <div class="ico" data-ico="tel"></div>
+        <h4>Business telephony</h4>
+        <p>Cloud phone systems and Teams Phone, call flows that match how the business actually answers, and number porting handled without a day of silence in the middle of it.</p>
+        <div class="after"><b>Then included</b>Call flow changes, user moves and monitoring</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ APPROACH ============================ -->
+<section id="approach" class="band-mist">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Our approach</span>
+      <h2>Five stages, in this order</h2>
+      <p class="lead">Switching provider is the genuinely risky part, not the running. This is how we take that risk instead of handing it to you.</p>
+    </div>
+    <!-- data-single: exclusive accordion. Opening one closes the others, and the
+         open item cannot be clicked shut, so a stage is always showing. -->
+    <div class="acc" data-single>
+      <details open>
+        <summary><span class="num">01</span>Recognise <span class="sub-t">— evaluate, understand, engage</span></summary>
+        <div class="acc-body">
+          <p>We audit what you actually run, not what the last provider documented — every device, every licence, every system, every dependency, including the things nobody remembers buying. It takes two weeks and roughly two hours of your team's time in total, and you get the written assessment regardless of whether you go any further with us.</p>
+          <ul>
+            <li>Full inventory of devices, licences, systems and connectivity</li>
+            <li>Recovery position tested rather than assumed</li>
+            <li>Risks ranked by business impact, not by technical severity</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary><span class="num">02</span>Consult <span class="sub-t">— advise, collaborate, aim</span></summary>
+        <div class="acc-body">
+          <p>We show you what we found and agree the order things get fixed in. You set the priorities — the commonest bad experience with a new provider is being told what matters rather than being asked. Everything is costed before anything starts, so there is no point at which the number moves without you having agreed to it first.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="num">03</span>Adapt <span class="sub-t">— align, design, prepare</span></summary>
+        <div class="acc-body">
+          <p>The gaps carrying real risk get closed first, on a plan you can see. We run in parallel with your existing arrangement for the first thirty days, and nothing is switched off until we have proven it working on our side.</p>
+          <ul>
+            <li>Parallel running so there is no cliff edge</li>
+            <li>Documentation produced as we go, and it is yours</li>
+            <li>Your current provider stays until the handover is proven</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary><span class="num">04</span>Outcomes <span class="sub-t">— transform, implement, deliver</span></summary>
+        <div class="acc-body">
+          <p>Changes land and we report what moved. Not activity, not ticket volumes — the specific risks that are now closed and the ones still open with a date against them. This is also the point at which the service credits and response times start applying, so the commitments become measurable from day one rather than after a settling-in period.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="num">05</span>Manage <span class="sub-t">— proactive, maintain, improve</span></summary>
+        <div class="acc-body">
+          <p>Proactive monitoring, published response times, monthly reporting and a quarterly review with someone who can actually make decisions. The estate gets a forward plan rather than drifting until something fails. And if any of this stops being true, three consecutive months of missed service levels lets you give notice and leave — which is how you hold us to it rather than having to argue about it.</p>
+        </div>
+      </details>
+    </div>
+    <div class="btns" style="margin-top:var(--s7)">
+      <a class="btn btn-pri" href="#book">Book a consultation</a>
+      <a class="btn btn-sec" href="#contact">Send us your details instead</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT FORM ============================ -->
+<section id="contact" class="band-ink">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Get in touch</span>
+      <h2>Tell us what you are running</h2>
+      <p class="lead">A few details so the first conversation is useful rather than exploratory. We reply within one business day, usually sooner.</p>
+    </div>
+
+    <form class="form" id="leadForm" novalidate>
+      <div class="frow">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-company">Company</label>
+          <input id="f-company" name="company" type="text" autocomplete="organization" required>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="field">
+          <label for="f-email">Work email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="field">
+          <label for="f-users">How many users do you have?</label>
+          <select id="f-users" name="users" required>
+            <option value="" disabled selected>Select</option>
+            <option>Fewer than 10</option>
+            <option>10 to 24</option>
+            <option>25 to 49</option>
+            <option>50 to 99</option>
+            <option>100 to 249</option>
+            <option>250 or more</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-industry">What industry are you in?</label>
+          <select id="f-industry" name="industry" required>
+            <option value="" disabled selected>Select</option>
+            <option>Accounting &amp; bookkeeping</option>
+            <option>Architecture &amp; engineering</option>
+            <option>Banking &amp; credit unions</option>
+            <option>Behavioral &amp; mental health</option>
+            <option>Biotech &amp; pharmaceuticals</option>
+            <option>Construction</option>
+            <option>Dental practice</option>
+            <option>Education</option>
+            <option>Financial services &amp; investment</option>
+            <option>Government &amp; public sector</option>
+            <option>Insurance</option>
+            <option>Legal</option>
+            <option>Logistics &amp; transportation</option>
+            <option>Manufacturing</option>
+            <option>Marketing &amp; creative</option>
+            <option>Medical practice &amp; clinics</option>
+            <option>Nonprofit</option>
+            <option>Pharmacy</option>
+            <option>Professional services</option>
+            <option>Property &amp; real estate</option>
+            <option>Retail &amp; ecommerce</option>
+            <option>Senior care &amp; assisted living</option>
+            <option>Technology &amp; software</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="field">
+          <label for="f-current">How is your IT handled today?</label>
+          <select id="f-current" name="current" required>
+            <option value="" disabled selected>Select</option>
+            <option>An in-house team</option>
+            <option>Another managed service provider</option>
+            <option>A local IT contractor</option>
+            <option>Nobody formally</option>
+            <option>A mix of the above</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-timing">When are you looking to change? <span class="opt">optional</span></label>
+          <select id="f-timing" name="timing">
+            <option value="" disabled selected>Select</option>
+            <option>As soon as possible</option>
+            <option>Within 3 months</option>
+            <option>In 3 to 6 months</option>
+            <option>Just researching for now</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-message">Anything specific we should know? <span class="opt">optional</span></label>
+        <textarea id="f-message" name="message" placeholder="The thing that prompted you to get in touch is usually the most useful place to start."></textarea>
+      </div>
+
+      <div class="hp" aria-hidden="true">
+        <label for="f-website">Leave this empty</label>
+        <input id="f-website" name="botcheck" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-foot">
+        <button class="btn btn-pri" type="submit" id="submitBtn">Send enquiry</button>
+        <small>We use your details only to respond to this enquiry. See our <a href="privacy.html">privacy policy</a>.</small>
+      </div>
+    </form>
+
+    <div id="formMsg" role="status" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============================ PRICING ============================ -->
+<section id="pricing" class="band-mist">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">What it costs</span>
+      <h2>A number, on a page</h2>
+      <div class="price">
+        <b>~$250</b><span>per user, per month</span>
+      </div>
+      <p class="lead">Depending on what you run. You get the exact figure after the assessment, and it does not move afterwards. Almost nobody in this industry publishes a number — which is precisely why we do.</p>
+    </div>
+
+    <h3 style="margin-bottom:var(--s3)">Everything in that number</h3>
+    <p class="lead" style="margin-bottom:var(--s6)">No modules, no tiers, no upgrade path, nothing held back for a premium plan. Everything below is in the monthly fee. <a href="#solutions" style="color:var(--green);border-bottom:1px solid var(--green)">Project work</a> is the single exception — it is quoted on its own, always before it starts, and running it afterwards is included.</p>
+
+    <div class="incl">
+      <div class="card">
+        <h4>What we commit to</h4>
+        <ul>
+          <li><b>Service credits</b> applied to your account automatically when we miss a published response time. No claim form, no process, nothing to prove</li>
+          <li><b>Published response times</b> — 15 minutes for a P1, one hour for a P2, four hours for a P3, one business day for a P4. All written into the agreement</li>
+          <li><b>Response means a named engineer</b> working on the problem, not an automated acknowledgement landing in your inbox</li>
+          <li><b>Hot-spare devices</b> kept in your building and already configured, so a failed laptop is a ten minute problem</li>
+          <li><b>An exit if we fail</b> — three consecutive months of missed service levels and you can give three months' notice and end the agreement, on any term and with no penalty</li>
+          <li><b>A free transition if you use that exit</b> — we move you to your new provider at no cost. No exit fee, no offboarding project, no holding the estate hostage on the way out</li>
+          <li><b>Monthly reporting</b> and a quarterly review about outcomes, sent whether the month was a good one or not</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>How support works</h4>
+        <ul>
+          <li><b>Unlimited support</b>, remote and onsite. No cap on tickets and no fair-use clause waiting in the small print</li>
+          <li><b>No per-incident billing</b>, so nobody on your team hesitates before asking for help</li>
+          <li><b>No surprise invoice</b> after a difficult month. A bad month is our problem, not yours</li>
+          <li><b>Named engineers</b> who know your estate, rather than a rota of strangers reading from a script</li>
+          <li><b>Every request tracked</b>, so there is an actual record of how long things take and whether it is improving</li>
+          <li><b>Proactive monitoring</b>, so most of it is dealt with before anyone thinks to report it</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>What we take on</h4>
+        <ul>
+          <li><b>Service desk</b> — the day to day, for every user, with every request measured</li>
+          <li><b>End user computing</b> — laptops, desktops and mobiles from procurement through build, deployment and replacement</li>
+          <li><b>Networks &amp; connectivity</b> — firewalls, switching, wireless and the links between sites and the cloud</li>
+          <li><b>Cyber security</b> — endpoint protection, patching, access control and multi-factor authentication as standard</li>
+          <li><b>Cloud &amp; infrastructure</b> — servers, storage, Microsoft 365, plus backup with restores tested quarterly</li>
+          <li><b>Service management</b> — reporting, quarterly reviews and a forward plan for the estate</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="incl-foot">
+      <h4>And the risk stays with us</h4>
+      <div class="row">
+        <div><b>No auto-renewal</b>The term ends when it ends. It does not roll over quietly while nobody is looking, and we write to you well before it expires either way</div>
+        <div><b>Thirty days running in parallel</b>Your current provider stays in place. Nothing is switched off until we have proven it working on our side</div>
+        <div><b>Your documentation, yours</b>Inventory, configurations and runbooks belong to you throughout and are handed over on request. We do not hold estates hostage</div>
+      </div>
+    </div>
+
+    <h3 style="margin:var(--s9) 0 var(--s5)">Commit for longer, pay for less</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Term</th><th>Months free</th><th>Service credits</th><th>Hot spares</th><th>Exit if we fail</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>12 months</td><td>2 months</td><td class="yes">Standard</td><td class="yes">Standard</td><td class="yes">Standard</td></tr>
+          <tr><td>3 years</td><td>6 months</td><td class="yes">Standard</td><td class="yes">Standard</td><td class="yes">Standard</td></tr>
+          <tr><td>5 years</td><td>12 months</td><td class="yes">Standard</td><td class="yes">Standard</td><td class="yes">Standard</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:var(--s5);color:var(--graphite);max-width:var(--measure)">A longer term is cheaper because it lets us invest in your estate properly rather than patching it. And length never means trapped: on any term, including the five year, three consecutive months of missed service levels entitles you to give three months' notice and end the agreement. Nothing is withheld from the shorter terms either — every column above reads the same deliberately.</p>
+  </div>
+</section>
+
+<!-- ============================ FIT ============================ -->
+<section id="fit" class="band-ink">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Who we work with</span>
+      <h2>We are not right for everyone</h2>
+      <p class="lead">We would rather say so now than six months into an agreement that was never going to work.</p>
+    </div>
+    <div class="fit">
+      <div class="y">
+        <h4>A good fit</h4>
+        <ul>
+          <li>Ten users or more</li>
+          <li>Regulated, or handling sensitive client data</li>
+          <li>More than one site, or people working across several</li>
+          <li>IT failures that stop the business rather than just annoy it</li>
+          <li>Wanting one accountable provider instead of several contractors</li>
+        </ul>
+      </div>
+      <div class="n">
+        <h4>Probably not</h4>
+        <ul>
+          <li>Under ten users and unregulated — the economics do not work in your favour</li>
+          <li>Looking for the cheapest hourly rate</li>
+          <li>Wanting someone to call only when something breaks</li>
+          <li>Happy with your current arrangement and testing the market</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" class="band-mist">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Questions</span>
+      <h2>The things people ask first</h2>
+    </div>
+    <div class="acc">
+      <details>
+        <summary>How much does managed IT actually cost?</summary>
+        <div class="acc-body">
+          <p>Around $250 per user per month for a full managed service. The exact figure depends on what you run — how many servers, how much of the estate is cloud, what compliance obligations you carry — and we give you a fixed number after the assessment. What it includes matters as much as the number, and ours covers unlimited support with no per-incident billing, so the monthly figure is what you actually pay rather than a starting point.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What size business do you work with?</summary>
+        <div class="acc-body">
+          <p>Ten users and above. Below that the economics genuinely do not work in your favour and you would be better served by a local contractor — we will tell you so rather than take the work. The exception is regulated businesses: a six-person dental practice or financial advisor carries obligations that a sixty-person marketing agency does not, and those we are happy to talk to at any size.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What are your response times?</summary>
+        <div class="acc-body">
+          <p>P1, meaning the business is stopped with no workaround, carries a fifteen minute target. P2 is one hour, P3 is four hours, P4 is one business day. Response means a named engineer working on the problem, not an automated acknowledgement — and all four are written into the agreement, with the first three carrying service credits if missed.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do service credits actually work?</summary>
+        <div class="acc-body">
+          <p>If we miss a published response time, a credit is applied to your next invoice automatically. There is no claim form, no process, and nothing for you to prove or chase. The amounts are not large, and that is not really the point — the point is that being slow costs us money, which is a materially different arrangement from one where it costs us nothing.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What happens if we want to leave?</summary>
+        <div class="acc-body">
+          <p>At the end of the term, you simply leave. Before then, there is one route out on every agreement including the five year: if we miss your service levels for three consecutive months, you can give three months' notice and end it, with no penalty and no negotiation about what the clause meant. And if you leave by that route, <strong>we transition you to your new provider free of charge</strong> — having failed you, billing you to go would be indefensible. Your documentation, inventory and configurations are yours throughout in any case. We do not hold estates hostage; a provider who has to rely on that has already lost the argument.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Do you replace our internal IT person?</summary>
+        <div class="acc-body">
+          <p>Usually not. Where there is internal IT we normally take the infrastructure, monitoring, out-of-hours and escalation, which frees your person to work on the things that actually need someone who knows your business. We will agree exactly where we stop and they start, in writing, before anything begins — ambiguity there is what makes co-sourcing arrangements fail.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How long does switching take, and how disruptive is it?</summary>
+        <div class="acc-body">
+          <p>Around ninety days end to end, of which the first two weeks are the assessment and require about two hours of your team's time. We run in parallel with your existing arrangement for the first thirty days and nothing is switched off until we have proven it working on our side, so your current provider stays in place until the handover is complete.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Where are you based?</summary>
+        <div class="acc-body">
+          <p>Lacuna is a UK registered company serving clients in the United States. Support is delivered remotely by our service desk, with onsite attendance arranged where your agreement includes it. Our privacy policy covers both UK and US data protection requirements, and we are happy to walk your compliance team through the arrangement before you commit to anything.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BOOK ============================ -->
+<section id="book" class="band-paper">
+  <div class="wrap">
+    <div class="sec-intro">
+      <span class="eb">Next step</span>
+      <h2>Book a consultation</h2>
+      <p class="lead">Around thirty minutes, free, and no obligation. We will ask what you run and what has prompted the conversation, and tell you honestly whether we are the right answer.</p>
+    </div>
+    <div id="cal-embed">
+      <noscript><div class="cal-fallback">Booking needs JavaScript. Email <a class="btn-link" href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a> and we will arrange a time.</div></noscript>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a class="wm" href="#" style="font-size:27px;color:var(--paper)" data-wm aria-label="Lacuna">Lacuna</a>
+        <p style="margin-top:var(--s4)">Managed IT with published response times, service credits as standard, and a way out if we fail to deliver them.</p>
+      </div>
+      <div>
+        <h5>Who we are</h5>
+        <ul>
+          <li><a href="#why">Why Lacuna</a></li>
+          <li><a href="#problem">The problem</a></li>
+          <li><a href="#commitment">Our commitment</a></li>
+          <li><a href="#approach">Our approach</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>What we do</h5>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Before you commit</h5>
+        <ul>
+          <li><a href="#pricing">What it costs</a></li>
+          <li><a href="#fit">Who we work with</a></li>
+          <li><a href="#faq">Questions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:hello@wearelacuna.com">hello@wearelacuna.com</a></li>
+          <li><a href="tel:+12145550100">+1 214 555 0100</a></li>
+          <li><a href="#contact">Send an enquiry</a></li>
+          <li><a href="#book">Book a consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
+      <p class="f-legal">
+        <!-- COMPANIES ACT 2006 — all four items below are legally required on a UK company website -->
+        Lacuna Ltd &middot; Registered in England and Wales, company number <span data-fill>00000000</span> &middot;
+        Registered office: <span data-fill>Address line, Town, Postcode, United Kingdom</span>.
+        &copy; <span id="yr">2026</span> Lacuna Ltd. All rights reserved.
+      </p>
+      <p><a href="privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of use</a> &nbsp;&middot;&nbsp; <a href="#" id="cookieReopen">Cookie settings</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ COOKIE CONSENT ============================ -->
+<div class="cookie" id="cookieBar" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <p>We would like to use analytics cookies to understand how this site is used. They are not set unless you agree. See our <a href="privacy.html">privacy policy</a>.</p>
+  <div class="acts">
+    <button class="btn btn-pri" id="ckAccept" type="button">Accept</button>
+    <button class="btn btn-sec" id="ckReject" type="button">Reject</button>
+  </div>
+</div>
+
+<!-- ============================ STRUCTURED DATA ============================ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"Lacuna",
+  "url":"https://wearelacuna.com/",
+  "image":"https://wearelacuna.com/assets/og-image.png",
+  "description":"Managed IT services with published response times, automatic service credits, hot-spare devices, and the right to terminate on three months' notice after three consecutive months of missed service levels — with a free transition to another provider if you do.",
+  "email":"hello@wearelacuna.com",
+  "telephone":"+1-214-555-0100",
+  "areaServed":"US",
+  "priceRange":"$$",
+  "serviceType":["Managed IT services","IT support","Cyber security","Cloud and infrastructure","Network management"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"How much does managed IT actually cost?","acceptedAnswer":{"@type":"Answer","text":"Around $250 per user per month for a full managed service. The exact figure depends on what you run and is fixed after the assessment. It covers unlimited support with no per-incident billing."}},
+  {"@type":"Question","name":"What size business do you work with?","acceptedAnswer":{"@type":"Answer","text":"Ten users and above. Below that the economics do not work in your favour. The exception is regulated businesses, which we are happy to talk to at any size."}},
+  {"@type":"Question","name":"What are your response times?","acceptedAnswer":{"@type":"Answer","text":"P1 fifteen minutes, P2 one hour, P3 four hours, P4 one business day. Response means a named engineer working on the problem, not an automated acknowledgement. All are written into the agreement."}},
+  {"@type":"Question","name":"How do service credits actually work?","acceptedAnswer":{"@type":"Answer","text":"If we miss a published response time, a credit is applied to your next invoice automatically. There is no claim form and nothing for you to prove or chase."}},
+  {"@type":"Question","name":"What happens if we want to leave?","acceptedAnswer":{"@type":"Answer","text":"At the end of the term you simply leave. Before then, every agreement including the five year carries one route out: if we miss your service levels for three consecutive months, you can give three months' notice and end it with no penalty, and we then transition you to your new provider free of charge. Your documentation and configurations are yours throughout in any case."}},
+  {"@type":"Question","name":"Do you replace our internal IT person?","acceptedAnswer":{"@type":"Answer","text":"Usually not. We typically take infrastructure, monitoring, out-of-hours and escalation, and agree in writing exactly where we stop and your internal team starts."}},
+  {"@type":"Question","name":"How long does switching take?","acceptedAnswer":{"@type":"Answer","text":"Around ninety days end to end. We run in parallel with your existing arrangement for the first thirty days and nothing is switched off until proven working."}},
+  {"@type":"Question","name":"Where are you based?","acceptedAnswer":{"@type":"Answer","text":"Lacuna is a UK registered company serving clients in the United States. Support is delivered remotely by our service desk, with onsite attendance where the agreement includes it."}}
+  ]
+}
+</script>
+
+<script>
+/* ==============================================================
+   CONFIGURATION — the only values you should need to change
+   ============================================================== */
+var CONFIG = {
+  CAL_LINK:       "khaleel.sethi/30min",
+  GA4_ID:         "G-XXXXXXXXXX",                       // <<< replace before launch
+  WEB3FORMS_KEY:  "960eabde-313c-48a0-95fc-31534d32387b",
+  FORM_ENDPOINT:  "https://api.web3forms.com/submit",
+  FALLBACK_EMAIL: "hello@wearelacuna.com"
+};
+
+(function(){
+"use strict";
+
+/* ==============================================================
+   1 — WORDMARK  (measured from Archivo, same rule as the brand system)
+   ============================================================== */
+var GREEN='#1D865A', LETTERS=['L','a','c','u','n','a'];
+var SW=0.50, CK=0.74, AP=70, GAPS=[0,0,0,0,0], ST=null;
+
+function strokeOf(){
+  if(ST) return ST;
+  try{
+    var S=240, cv=document.createElement('canvas');
+    cv.width=Math.round(S*1.4); cv.height=Math.round(S*1.6);
+    var x=cv.getContext('2d',{willReadFrequently:true});
+    x.font='normal 500 '+S+'px Archivo, sans-serif'; x.textBaseline='alphabetic'; x.fillStyle='#000';
+    x.fillText('c', Math.round(S*0.2), Math.round(S*1.2));
+    var W=cv.width,H=cv.height,d=x.getImageData(0,0,W,H).data;
+    var A=function(px,py){return d[(py*W+px)*4+3]};
+    var minX=W,maxX=-1,minY=H,maxY=-1,px,py;
+    for(py=0;py<H;py++)for(px=0;px<W;px++)
+      if(A(px,py)>128){if(px<minX)minX=px;if(px>maxX)maxX=px;if(py<minY)minY=py;if(py>maxY)maxY=py}
+    if(maxX<0) return null;
+    var cyM=Math.round((minY+maxY)/2),run=0,thick=0;
+    for(px=minX;px<=maxX;px++){if(A(px,cyM)>128)run++;else if(run){thick=run;break}}
+    if(run&&!thick)thick=run;
+    var cxM=Math.round((minX+maxX)/2);run=0;var thin=0;
+    for(py=minY;py<=maxY;py++){if(A(cxM,py)>128)run++;else if(run){thin=run;break}}
+    if(run&&!thin)thin=run;
+    ST={thick:thick/S,thin:thin/S};
+  }catch(e){ ST=null }
+  return ST;
+}
+function buildWm(el){
+  var cs=getComputedStyle(el), fs=parseFloat(cs.fontSize), st=strokeOf();
+  if(!st) return;                                   // leaves plain "Lacuna" — acceptable fallback
+  var sw=fs*(st.thin+(st.thick-st.thin)*SW);
+  var ctx=document.createElement('canvas').getContext('2d');
+  ctx.font='normal 500 '+fs+'px Archivo, sans-serif';
+  var mc=ctx.measureText('c');
+  var asc=mc.actualBoundingBoxAscent, desc=mc.actualBoundingBoxDescent, inkH=asc+desc;
+  if(!inkH) return;
+  var r=inkH/2, rad=r-sw/2, coreR=CK*(rad-sw/2), g=AP*Math.PI/360;
+  var n=function(v){return Math.round(v*1000)/1000};
+  var svg='<svg width="'+n(2*r)+'" height="'+n(inkH)+'" viewBox="0 0 '+n(2*r)+' '+n(inkH)+
+    '" style="vertical-align:'+n(-desc)+'px" aria-hidden="true"><path d="M'+n(r+rad*Math.cos(g))+' '+
+    n(r+rad*Math.sin(g))+' A'+n(rad)+' '+n(rad)+' 0 1 1 '+n(r+rad*Math.cos(-g))+' '+n(r+rad*Math.sin(-g))+
+    '" fill="none" stroke="'+cs.color+'" stroke-width="'+n(sw)+'"/><circle cx="'+n(r)+'" cy="'+n(r)+'" r="'+
+    n(coreR)+'" fill="'+GREEN+'"/></svg>';
+  el.innerHTML=LETTERS.map(function(ch,i){
+    return '<span style="margin-right:'+n(i<5?GAPS[i]/1000*fs:0)+'px">'+(ch==='c'?svg:ch)+'</span>';
+  }).join('');
+  el._fs=fs; el._ctx=ctx; el._r=r;
+}
+function measureWm(el){
+  if(!el._ctx) return null;
+  var spans=el.querySelectorAll('span'), ctx=el._ctx, fs=el._fs, edges=[], out=[];
+  Array.prototype.forEach.call(spans,function(s,i){
+    var rect=s.getBoundingClientRect(), ch=LETTERS[i];
+    if(ch==='c') edges.push([rect.left, rect.left+2*el._r]);
+    else { var m=ctx.measureText(ch); edges.push([rect.left-m.actualBoundingBoxLeft, rect.left+m.actualBoundingBoxRight]) }
+  });
+  for(var i=0;i<edges.length-1;i++) out.push((edges[i+1][0]-edges[i][1])/fs*1000);
+  return out;
+}
+function solveGaps(){
+  var p=document.createElement('span');
+  p.className='wm';
+  p.style.cssText='font-size:200px;position:absolute;left:-9999px;top:0;font-family:Archivo,sans-serif;color:#000';
+  document.body.appendChild(p); buildWm(p);
+  for(var i=0;i<3;i++){
+    var m=measureWm(p); if(!m) break;
+    var t=m.reduce(function(a,b){return a+b},0)/m.length;
+    for(var j=0;j<5;j++) GAPS[j]+=(t-m[j]);
+    buildWm(p);
+  }
+  var bias=[-6,-14,-12,6,-8];
+  for(var k=0;k<5;k++) GAPS[k]=Math.round(GAPS[k]+bias[k]);
+  document.body.removeChild(p);
+}
+function heroGhost(){
+  var host=document.getElementById('heroGhost'); if(!host) return;
+  var st=strokeOf(); if(!st) return;
+  var sw=100*(st.thin+(st.thick-st.thin)*SW)/0.54;
+  var rad=34, Ro=rad+sw/2, Ri=rad-sw/2, cx=52, cy=50, g=AP*Math.PI/360;
+  var n=function(v){return Math.round(v*100)/100};
+  var d='M'+n(cx+Ro*Math.cos(g))+' '+n(cy+Ro*Math.sin(g))+'A'+n(Ro)+' '+n(Ro)+' 0 1 1 '+
+        n(cx+Ro*Math.cos(-g))+' '+n(cy+Ro*Math.sin(-g))+'L'+n(cx+Ri*Math.cos(-g))+' '+n(cy+Ri*Math.sin(-g))+
+        'A'+n(Ri)+' '+n(Ri)+' 0 1 0 '+n(cx+Ri*Math.cos(g))+' '+n(cy+Ri*Math.sin(g))+'Z';
+  host.innerHTML='<svg viewBox="0 0 100 100" style="width:100%;height:auto;display:block">'+
+    '<path fill="#F7F6F2" d="'+d+'"/><circle fill="#F7F6F2" cx="'+cx+'" cy="'+cy+'" r="'+n(CK*(rad-sw/2))+'"/></svg>';
+}
+
+/* ==============================================================
+   2 — ICONS  (1.75px stroke, butt caps, mitre joins, ink only)
+   ============================================================== */
+// currentColor rather than a fixed hex, so icon colour is set in CSS per section
+var I='fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="butt" stroke-linejoin="miter"';
+var ICONS={
+  desk:'<circle cx="12" cy="12" r="8.5" '+I+'/><path d="M12 7.5v5l3 2" '+I+'/>',
+  euc :'<rect x="3" y="5" width="13" height="10" '+I+'/><rect x="17" y="10" width="4" height="9" '+I+'/>',
+  net :'<path d="M4 8h16M4 16h16M9 4v16M15 4v16" '+I+'/>',
+  sec :'<path d="M12 3.5l7 2.5v5.5c0 4-3 7-7 9-4-2-7-5-7-9V6z" '+I+'/>',
+  // stacked layers — reads as infrastructure, and stays in the geometric
+  // language of the other five rather than importing a soft cloud outline
+  cloud:'<path d="M12 3.2l8.6 4.6L12 12.4 3.4 7.8z" '+I+'/>'+
+        '<path d="M3.4 12.1L12 16.7l8.6-4.6" '+I+'/>'+
+        '<path d="M3.4 16.4L12 21l8.6-4.6" '+I+'/>',
+  svc :'<path d="M4 20V4M4 20h16M8 16V9M13 16V6M18 16v-5" '+I+'/>',
+  m365:'<rect x="3.5" y="3.5" width="7.6" height="7.6" '+I+'/><rect x="12.9" y="3.5" width="7.6" height="7.6" '+I+'/>'+
+       '<rect x="3.5" y="12.9" width="7.6" height="7.6" '+I+'/><rect x="12.9" y="12.9" width="7.6" height="7.6" '+I+'/>',
+  migr:'<rect x="2.5" y="6.5" width="7" height="11" '+I+'/><rect x="14.5" y="6.5" width="7" height="11" '+I+'/>'+
+       '<path d="M10 12h4M12.2 10.2L14 12l-1.8 1.8" '+I+'/>',
+  bak :'<path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3v10c0 1.7-3.6 3-8 3s-8-1.3-8-3z" '+I+'/><path d="M4 7c0 1.7 3.6 3 8 3s8-1.3 8-3" '+I+'/>',
+  tel :'<path d="M4.5 3.5h4l1.6 4-2.1 1.5a12.5 12.5 0 0 0 6 6L15.5 13l4 1.6v4a1.4 1.4 0 0 1-1.5 1.4A16.5 16.5 0 0 1 3.1 5a1.4 1.4 0 0 1 1.4-1.5z" '+I+'/>'
+};
+function drawIcons(){
+  document.querySelectorAll('[data-ico]').forEach(function(el){
+    var k=el.dataset.ico;
+    if(ICONS[k]) el.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+ICONS[k]+'</svg>';
+  });
+}
+
+/* ==============================================================
+   3 — ACCORDIONS  (native <details> kept for SEO and no-JS)
+   ============================================================== */
+var DUR=400, EASE='cubic-bezier(.65,0,.35,1)';
+
+/* padding-bottom has to be animated alongside height: with border-box sizing
+   any height below the padding value still renders as the padding, so the
+   panel stalls short of closed and then snaps. */
+function accOpen(d){
+  var body=d.querySelector('.acc-body');
+  if(d._anim){ d._anim.cancel(); d._anim=null }
+  d.classList.remove('closing');
+  d.open=true;                                    // must be open to measure
+  var pad=getComputedStyle(body).paddingBottom;
+  var h=body.offsetHeight;
+  d._anim=body.animate(
+    [{height:'0px',paddingBottom:'0px',opacity:0},{height:h+'px',paddingBottom:pad,opacity:1}],
+    {duration:DUR,easing:EASE});
+  d._anim.onfinish=function(){ d._anim=null; body.style.height='' };
+}
+function accClose(d){
+  var body=d.querySelector('.acc-body');
+  if(d._anim){ d._anim.cancel(); d._anim=null }
+  d.classList.add('closing');
+  var pad=getComputedStyle(body).paddingBottom;
+  var h=body.offsetHeight;
+  d._anim=body.animate(
+    [{height:h+'px',paddingBottom:pad,opacity:1},{height:'0px',paddingBottom:'0px',opacity:0}],
+    {duration:DUR,easing:EASE,fill:'forwards'});
+  d._anim.onfinish=function(){
+    d.open=false;                                 // set before cancel, or it flashes
+    d.classList.remove('closing');
+    if(d._anim){ d._anim.cancel(); d._anim=null }
+    body.style.height='';
+  };
+}
+function wireAccordions(){
+  document.querySelectorAll('details').forEach(function(d){
+    var sum=d.querySelector('summary'), body=d.querySelector('.acc-body');
+    if(!sum||!body) return;
+    d._anim=null;
+    sum.addEventListener('click', function(e){
+      e.preventDefault();
+      var group=d.parentElement && d.parentElement.hasAttribute('data-single')
+              ? d.parentElement : null;
+      if(group){
+        if(d.open) return;                        // one stays open at all times
+        group.querySelectorAll('details[open]').forEach(function(o){
+          if(o!==d) accClose(o);
+        });
+        accOpen(d);
+      } else {
+        if(d.open) accClose(d); else accOpen(d);  // FAQ stays multi-open
+      }
+    });
+  });
+}
+
+/* ==============================================================
+   4 — CONSENT  (UK GDPR / PECR: analytics is opt-IN, not opt-out)
+   ============================================================== */
+var CK_KEY='lacuna-consent';
+function gpc(){ return navigator.globalPrivacyControl===true || navigator.doNotTrack==='1' }
+function getConsent(){ try{ return localStorage.getItem(CK_KEY) }catch(e){ return null } }
+function setConsent(v){ try{ localStorage.setItem(CK_KEY,v) }catch(e){} }
+function loadGA(){
+  if(!CONFIG.GA4_ID || CONFIG.GA4_ID.indexOf('XXXX')>-1) return;   // never load with a placeholder id
+  if(window.__gaLoaded) return; window.__gaLoaded=true;
+  var s=document.createElement('script');
+  s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+CONFIG.GA4_ID;
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=function(){ dataLayer.push(arguments) };
+  gtag('js',new Date());
+  gtag('config',CONFIG.GA4_ID,{anonymize_ip:true});
+}
+function track(name,params){ if(window.gtag) window.gtag('event',name,params||{}) }
+function wireConsent(){
+  var bar=document.getElementById('cookieBar');
+  var choice=getConsent();
+  if(gpc() && !choice){ setConsent('reject'); choice='reject'; }   // honour the browser signal silently
+  if(choice==='accept') loadGA();
+  else if(!choice) setTimeout(function(){ bar.classList.add('show') }, 900);
+
+  document.getElementById('ckAccept').onclick=function(){
+    setConsent('accept'); bar.classList.remove('show'); loadGA();
+  };
+  document.getElementById('ckReject').onclick=function(){
+    setConsent('reject'); bar.classList.remove('show');
+  };
+  var re=document.getElementById('cookieReopen');
+  if(re) re.onclick=function(e){ e.preventDefault(); bar.classList.add('show') };
+}
+
+/* ==============================================================
+   5 — LEAD FORM
+   ============================================================== */
+var BELOW_MINIMUM='Fewer than 10';
+var COMPLIANCE_SECTORS=['Accounting & bookkeeping','Banking & credit unions',
+  'Financial services & investment','Insurance','Legal','Dental practice',
+  'Medical practice & clinics','Behavioral & mental health','Senior care & assisted living',
+  'Pharmacy','Biotech & pharmaceuticals','Government & public sector'];
+
+function wireForm(){
+  var form=document.getElementById('leadForm');
+  var msg=document.getElementById('formMsg');
+  var btn=document.getElementById('submitBtn');
+  if(!form) return;
+  var opened=Date.now();
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.reportValidity()) return;
+    if(form.botcheck.value) return;                       // honeypot — fail silently
+    if(Date.now()-opened < 3000) return;                  // too fast to be human
+
+    var data={};
+    new FormData(form).forEach(function(v,k){ data[k]=v });
+    delete data.botcheck;
+
+    var below = data.users===BELOW_MINIMUM && COMPLIANCE_SECTORS.indexOf(data.industry)===-1;
+    data.fit = below ? 'below-minimum'
+             : (data.users===BELOW_MINIMUM ? 'small-but-regulated' : 'qualified');
+    data.access_key = CONFIG.WEB3FORMS_KEY;
+    data.subject = 'Website enquiry — '+(data.company||'unknown')+' ('+data.users+' users, '+data.fit+')';
+    data.replyto = data.email;
+    data.from_name = 'Lacuna website';
+
+    btn.disabled=true; btn.textContent='Sending…';
+
+    fetch(CONFIG.FORM_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify(data)
+    }).then(function(r){ return r.json() })
+      .then(function(){
+        form.style.display='none';
+        msg.className='show'+(below?' soft':'');
+        if(below){
+          msg.innerHTML='<h3>Thank you — and an honest answer</h3>'+
+            '<p>At your size a full managed service is unlikely to be the right value for you, and we would rather say that now than sell you something that does not fit. '+
+            'A local IT contractor on a pay-as-you-go arrangement will almost certainly serve you better.</p>'+
+            '<p style="margin-top:var(--s3)">If your situation is more involved than the form allows for — a compliance obligation, multiple sites, or rapid growth — do reply to the confirmation email and we will take a proper look.</p>';
+          track('lead_below_minimum',{users:data.users,industry:data.industry});
+        } else {
+          msg.innerHTML='<h3>Thank you — we have got it</h3>'+
+            '<p>We reply within one business day, usually sooner. If it is urgent, call '+
+            '<a class="btn-link" style="color:var(--green-300);border-color:var(--green-300)" href="tel:+12145550100">+1 214 555 0100</a>.</p>'+
+            '<p style="margin-top:var(--s3)">If you would rather skip the back and forth, you can '+
+            '<a class="btn-link" style="color:var(--green-300);border-color:var(--green-300)" href="#book">book a consultation</a> straight away.</p>';
+          track('generate_lead',{users:data.users,industry:data.industry,fit:data.fit});
+        }
+        msg.scrollIntoView({block:'center',behavior:'smooth'});
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent='Send enquiry';
+        msg.className='show err';
+        msg.innerHTML='<h3>That did not send</h3><p>Something went wrong at our end. Please email '+
+          '<a class="btn-link" style="color:var(--green-300);border-color:var(--green-300)" href="mailto:'+
+          CONFIG.FALLBACK_EMAIL+'">'+CONFIG.FALLBACK_EMAIL+'</a> and we will pick it up straight away.</p>';
+      });
+  });
+}
+
+/* ==============================================================
+   6 — CAL.COM
+   ============================================================== */
+function wireCal(){
+  var host=document.getElementById('cal-embed'); if(!host) return;
+  (function(C,A,L){var p=function(a,ar){a.q.push(ar)};var d=C.document;
+    C.Cal=C.Cal||function(){var cal=C.Cal,ar=arguments;
+      if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}
+      if(ar[0]===L){const api=function(){p(api,arguments)};const ns=ar[1];api.q=api.q||[];
+        typeof ns==="string"?(cal.ns[ns]=cal.ns[ns]||api)&&p(cal.ns[ns],ar)&&p(cal,["initNamespace",ns]):p(cal,ar);return}
+      p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
+  Cal("init","lacuna",{origin:"https://cal.com"});
+  Cal.ns.lacuna("inline",{elementOrSelector:"#cal-embed",calLink:CONFIG.CAL_LINK,layout:"month_view"});
+  // theme is pinned to light so the calendar cannot render as a dark panel
+  // in the middle of a paper section on a visitor whose OS is in dark mode.
+  Cal.ns.lacuna("ui",{
+    hideEventTypeDetails:false,
+    layout:"month_view",
+    theme:"light",
+    cssVarsPerTheme:{
+      light:{
+        "cal-brand":"#1D865A",
+        "cal-brand-emphasis":"#166444",
+        "cal-brand-text":"#FFFFFF",
+        "cal-bg":"#F7F6F2",
+        "cal-bg-emphasis":"#EFEDE8",
+        "cal-bg-subtle":"#EFEDE8",
+        "cal-bg-muted":"#EFEDE8",
+        "cal-bg-inverted":"#15171A",
+        "cal-text":"#15171A",
+        "cal-text-emphasis":"#15171A",
+        "cal-text-subtle":"#6E7276",
+        "cal-text-muted":"#9B9A96",
+        "cal-text-inverted":"#F7F6F2",
+        "cal-border":"#E2E0DA",
+        "cal-border-subtle":"#E2E0DA",
+        "cal-border-emphasis":"#C9C7C1",
+        "cal-border-booker":"#E2E0DA"
+      }
+    }
+  });
+  Cal.ns.lacuna("on",{action:"bookingSuccessful",callback:function(){ track('booking_confirmed'); }});
+}
+
+/* ==============================================================
+   7 — HERO CAROUSEL
+   Posters load instantly; video is fetched only for the slide on
+   screen and the one after it, so a visitor never downloads four.
+   ============================================================== */
+function wireHero(){
+  var slides=[].slice.call(document.querySelectorAll('.hslide'));
+  var copies=[].slice.call(document.querySelectorAll('.hcopy'));
+  var dots  =[].slice.call(document.querySelectorAll('.dot'));
+  var btn   =document.getElementById('heroPause');
+  if(slides.length<2) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+  var noVideo = reduce || saveData;
+  var i=0, timer=null, paused=false, HOLD=7000;
+
+  var PLAY='<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0l8 5-8 5z"/></svg>';
+  var PAUSE='<svg viewBox="0 0 10 10" aria-hidden="true"><rect x="1" y="0" width="3" height="10"/><rect x="6" y="0" width="3" height="10"/></svg>';
+
+  function loadVideo(n){
+    var s=slides[n], src=s.getAttribute('data-video');
+    if(noVideo || !src || s.querySelector('video')) return;
+    var v=document.createElement('video');
+    v.muted=true; v.defaultMuted=true; v.loop=true; v.autoplay=true; v.preload='auto';
+    v.setAttribute('muted',''); v.setAttribute('playsinline',''); v.setAttribute('aria-hidden','true');
+    v.playsInline=true;
+    v.addEventListener('canplay',function(){ v.classList.add('ready') },{once:true});
+    v.addEventListener('error',function(){ v.remove() },{once:true});   // poster stays, nothing breaks
+    v.src=src;
+    s.appendChild(v);
+    var p=v.play(); if(p && p.catch) p.catch(function(){});
+  }
+  function go(n){
+    i=(n+slides.length)%slides.length;
+    slides.forEach(function(s,k){ s.classList.toggle('on',k===i) });
+    copies.forEach(function(c,k){ c.classList.toggle('on',k===i) });
+    dots.forEach(function(d,k){
+      d.classList.toggle('on',k===i);
+      d.setAttribute('aria-current', k===i ? 'true' : 'false');
+    });
+    loadVideo(i);
+    loadVideo((i+1)%slides.length);
+    slides.forEach(function(s,k){
+      var v=s.querySelector('video'); if(!v) return;
+      if(k===i){ var p=v.play(); if(p&&p.catch) p.catch(function(){}) } else v.pause();
+    });
+  }
+  function start(){ if(paused) return; clearInterval(timer); timer=setInterval(function(){go(i+1)},HOLD) }
+  function stop(){ clearInterval(timer); timer=null }
+
+  dots.forEach(function(d,k){
+    d.addEventListener('click',function(){ go(k); if(!paused) start() });
+  });
+  btn.addEventListener('click',function(){
+    paused=!paused;
+    if(paused){ stop(); btn.innerHTML=PLAY; btn.setAttribute('aria-label','Play slideshow') }
+    else { start(); btn.innerHTML=PAUSE; btn.setAttribute('aria-label','Pause slideshow') }
+    slides.forEach(function(s,k){
+      var v=s.querySelector('video'); if(!v) return;
+      if(paused) v.pause(); else if(k===i){ var p=v.play(); if(p&&p.catch) p.catch(function(){}) }
+    });
+  });
+  // Only ever stop for a hidden tab or the explicit pause button.
+  // Pausing on hover or focus sounds considerate, but on a full-bleed hero the
+  // pointer sits over it almost permanently and the rotation simply never runs.
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden) stop(); else if(!paused) start();
+  });
+
+  go(0);
+  start();
+}
+
+/* ==============================================================
+   8 — NAV
+   ============================================================== */
+function wireNav(){
+  var t=document.getElementById('navToggle'), n=document.getElementById('nav');
+  if(!t) return;
+  t.addEventListener('click',function(){
+    var open=n.classList.toggle('open');
+    t.setAttribute('aria-expanded',open?'true':'false');
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){ n.classList.remove('open'); t.setAttribute('aria-expanded','false') });
+  });
+}
+
+/* ==============================================================
+   BOOT
+   ============================================================== */
+function boot(){
+  try{ solveGaps(); }catch(e){}
+  document.querySelectorAll('[data-wm]').forEach(buildWm);
+  drawIcons(); wireAccordions(); wireNav(); wireConsent(); wireForm();
+  try{ wireHero() }catch(e){}
+  try{ wireCal() }catch(e){}
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+}
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setTimeout(boot,40) });
+else window.addEventListener('load', boot);
+})();
+</script>
+
+</body>
+</html>

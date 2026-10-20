@@ -1,0 +1,8 @@
+# www.wearelacuna.com
+# Everything is open to crawlers. There is nothing here to hide, and a
+# stray Disallow is the most common reason a small site never appears.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.wearelacuna.com/sitemap.xml

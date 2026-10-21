@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — Lacuna</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M25.2 22.02A10.5 10.5 0 1 1 25.2 9.98' fill='none' stroke='%231D865A' stroke-width='5' stroke-linecap='butt'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap"></noscript>
+<style>
+/* ============================================================
+   Every link here is root-relative. A 404 can be served at any
+   depth — /old/section/page/ — and relative paths would resolve
+   against that phantom directory and break.
+   ============================================================ */
+:root{
+  --ink:#15171A; --slate:#3E4246; --graphite:#6E7276; --ash:#9B9A96;
+  --silver:#C9C7C1; --line:#E2E0DA; --mist:#EFEDE8; --paper:#F7F6F2;
+  --green:#1D865A; --green-700:#166444; --green-300:#53C696;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Archivo',system-ui,-apple-system,sans-serif;background:var(--ink);color:var(--paper);
+  line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:0 40px;width:100%}
+
+header{padding:26px 0;border-bottom:1px solid rgba(247,246,242,.14)}
+.wm{line-height:1;white-space:nowrap;display:inline-block;font-weight:500;letter-spacing:0;
+  font-kerning:none;font-variant-ligatures:none;font-feature-settings:"kern" 0,"liga" 0;
+  color:var(--paper);font-size:27px;text-decoration:none}
+.wm svg{display:inline-block}
+
+main{flex:1;display:flex;align-items:center;padding:80px 0}
+.eb{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green-300);
+  font-weight:600;margin-bottom:18px;display:block}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:600;letter-spacing:-.035em;line-height:1.08;max-width:16ch}
+p.lead{margin-top:20px;font-size:1.12rem;color:rgba(247,246,242,.66);max-width:58ch}
+p.sub{margin-top:14px;font-size:1rem;color:rgba(247,246,242,.45);max-width:58ch}
+
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.btn{display:inline-flex;align-items:center;font-size:.98rem;font-weight:500;padding:15px 28px;
+  border-radius:4px;border:1px solid transparent;text-decoration:none;transition:background .18s,color .18s,border-color .18s}
+.btn-pri{background:var(--green);color:#fff}
+.btn-pri:hover{background:var(--green-700)}
+.btn-sec{border-color:rgba(247,246,242,.42);color:var(--paper)}
+.btn-sec:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+
+nav.more{margin-top:56px;padding-top:26px;border-top:1px solid rgba(247,246,242,.14)}
+nav.more h2{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(247,246,242,.34);font-weight:600;margin-bottom:16px}
+nav.more ul{list-style:none;display:flex;gap:26px;flex-wrap:wrap}
+nav.more a{color:rgba(247,246,242,.66);text-decoration:none;font-size:.95rem}
+nav.more a:hover{color:var(--paper)}
+
+footer{padding:24px 0 36px;font-size:.83rem;color:rgba(247,246,242,.38)}
+a:focus-visible{outline:2px solid var(--green-300);outline-offset:3px}
+@media(max-width:620px){.wrap{padding:0 22px}.btn{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wm" href="/" data-wm aria-label="Lacuna, home">Lacuna</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <span class="eb">Page not found</span>
+    <h1>That page isn't here any more</h1>
+    <p class="lead">You have most likely followed a link to something that used to sit at this address. This domain had a previous life, and those pages are long gone.</p>
+    <p class="sub">We are Lacuna — managed IT for growing US businesses, with response times written into the agreement and service credits applied automatically when we miss them. Which may or may not be what you were looking for.</p>
+
+    <div class="btns">
+      <a class="btn btn-pri" href="/">Go to the homepage</a>
+      <a class="btn btn-sec" href="/#book">Book a consultation</a>
+    </div>
+
+    <nav class="more">
+      <h2>Or jump straight to</h2>
+      <ul>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#commitment">What we commit to</a></li>
+        <li><a href="/#pricing">What it costs</a></li>
+        <li><a href="/#faq">Questions</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+      </ul>
+    </nav>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">&copy; <span id="yr">2026</span> Lacuna. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var GREEN='#1D865A', LETTERS=['L','a','c','u','n','a'];
+var SW=0.50, CK=0.74, AP=70, GAPS=[0,0,0,0,0], ST=null;
+function strokeOf(){
+  if(ST) return ST;
+  try{
+    var S=240, cv=document.createElement('canvas');
+    cv.width=Math.round(S*1.4); cv.height=Math.round(S*1.6);
+    var x=cv.getContext('2d',{willReadFrequently:true});
+    x.font='normal 500 '+S+'px Archivo, sans-serif';
+    x.textBaseline='alphabetic'; x.fillStyle='#000';
+    x.fillText('c', Math.round(S*0.2), Math.round(S*1.2));
+    var W=cv.width,H=cv.height,d=x.getImageData(0,0,W,H).data;
+    var A=function(px,py){return d[(py*W+px)*4+3]};
+    var minX=W,maxX=-1,minY=H,maxY=-1,px,py;
+    for(py=0;py<H;py++)for(px=0;px<W;px++)
+      if(A(px,py)>128){if(px<minX)minX=px;if(px>maxX)maxX=px;if(py<minY)minY=py;if(py>maxY)maxY=py}
+    if(maxX<0) return null;
+    var cyM=Math.round((minY+maxY)/2),run=0,thick=0;
+    for(px=minX;px<=maxX;px++){if(A(px,cyM)>128)run++;else if(run){thick=run;break}}
+    if(run&&!thick)thick=run;
+    var cxM=Math.round((minX+maxX)/2);run=0;var thin=0;
+    for(py=minY;py<=maxY;py++){if(A(cxM,py)>128)run++;else if(run){thin=run;break}}
+    if(run&&!thin)thin=run;
+    ST={thick:thick/S,thin:thin/S};
+  }catch(e){ ST=null }
+  return ST;
+}
+function build(el){
+  var cs=getComputedStyle(el), fs=parseFloat(cs.fontSize), st=strokeOf();
+  if(!st) return;
+  var sw=fs*(st.thin+(st.thick-st.thin)*SW);
+  var ctx=document.createElement('canvas').getContext('2d');
+  ctx.font='normal 500 '+fs+'px Archivo, sans-serif';
+  var mc=ctx.measureText('c');
+  var asc=mc.actualBoundingBoxAscent, desc=mc.actualBoundingBoxDescent, inkH=asc+desc;
+  if(!inkH) return;
+  var r=inkH/2, rad=r-sw/2, coreR=CK*(rad-sw/2), g=AP*Math.PI/360;
+  var n=function(v){return Math.round(v*1000)/1000};
+  var svg='<svg width="'+n(2*r)+'" height="'+n(inkH)+'" viewBox="0 0 '+n(2*r)+' '+n(inkH)+
+    '" style="vertical-align:'+n(-desc)+'px" aria-hidden="true"><path d="M'+n(r+rad*Math.cos(g))+
+    ' '+n(r+rad*Math.sin(g))+' A'+n(rad)+' '+n(rad)+' 0 1 1 '+n(r+rad*Math.cos(-g))+' '+
+    n(r+rad*Math.sin(-g))+'" fill="none" stroke="'+cs.color+'" stroke-width="'+n(sw)+
+    '"/><circle cx="'+n(r)+'" cy="'+n(r)+'" r="'+n(coreR)+'" fill="'+GREEN+'"/></svg>';
+  el.innerHTML=LETTERS.map(function(ch,i){
+    return '<span style="margin-right:'+n(i<5?GAPS[i]/1000*fs:0)+'px">'+(ch==='c'?svg:ch)+'</span>';
+  }).join('');
+  el._fs=fs; el._ctx=ctx; el._r=r;
+}
+function measure(el){
+  if(!el._ctx) return null;
+  var spans=el.querySelectorAll('span'), ctx=el._ctx, fs=el._fs, edges=[], out=[];
+  Array.prototype.forEach.call(spans,function(s,i){
+    var rect=s.getBoundingClientRect(), ch=LETTERS[i];
+    if(ch==='c') edges.push([rect.left, rect.left+2*el._r]);
+    else { var m=ctx.measureText(ch);
+      edges.push([rect.left-m.actualBoundingBoxLeft, rect.left+m.actualBoundingBoxRight]) }
+  });
+  for(var i=0;i<edges.length-1;i++) out.push((edges[i+1][0]-edges[i][1])/fs*1000);
+  return out;
+}
+function solveGaps(){
+  var p=document.createElement('span');
+  p.className='wm';
+  p.style.cssText='font-size:200px;position:absolute;left:-9999px;top:0;color:#000';
+  document.body.appendChild(p); build(p);
+  for(var i=0;i<3;i++){
+    var m=measure(p); if(!m) break;
+    var t=m.reduce(function(a,b){return a+b},0)/m.length;
+    for(var j=0;j<5;j++) GAPS[j]+=(t-m[j]);
+    build(p);
+  }
+  var bias=[-6,-14,-12,6,-8];
+  for(var k=0;k<5;k++) GAPS[k]=Math.round(GAPS[k]+bias[k]);
+  document.body.removeChild(p);
+}
+function boot(){
+  try{ solveGaps() }catch(e){}
+  document.querySelectorAll('[data-wm]').forEach(build);
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+}
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setTimeout(boot,40) });
+else window.addEventListener('load', boot);
+})();
+</script>
+
+</body>
+</html>
